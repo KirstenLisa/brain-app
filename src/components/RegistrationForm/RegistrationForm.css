@@ -1,0 +1,130 @@
+.registration-form {
+    display: block;
+    font-size: 26px;
+    color: #104D73;
+    background-color: lightgray;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+
+.registration_input {
+    display: block;
+    border: 1px solid #104D73;
+    border-radius: 3px;
+    margin: 5px 0px 20px 5px;
+    font-size: 20px;
+    background-color: white;
+    width: 95%;
+}
+
+.registration-form-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+button {
+    color: white;
+    font-size: 23px;
+    border-radius: 3px;
+    margin: 10px;
+}
+
+.submitRegistration {
+    background-color: gray;
+    border: 2px solid  gray;
+}
+
+.cancelRegistration {
+    background-color: pink;
+    border: 2px solid pink;
+}
+
+.error, .registrationError {
+    color: #F20F38;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Roboto, sans-serif;
+    
+}
+
+@media screen and (min-width: 720px) {
+
+    .registration-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 15px;
+        font-size: 26px;
+        margin-left: 70px;
+        margin-right: 70px;
+        margin-top: 40px;
+        border-radius: 5px;
+    }
+
+    .fullname, .user_name, .password, .email {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    label {
+        flex: 1;
+    }
+
+    .registration_input {
+        margin: 10px;
+        margin-bottom: 20px;
+        padding-left: 5px;
+        font-size: 24px;
+        width: 60%;
+        flex: 2;
+        height: 40px;
+    }
+
+    .submitRegistration {
+        width: 100px;
+    }
+    
+    .cancelRegistration {
+        width: 100px;
+    }
+
+    .registration_error {
+        width: 100%;
+    }
+
+    .error, .registrationError{
+        font-size: 29px;
+}
+
+}
+
+  @media screen and (min-width: 980px) {
+
+    .registrationForm {
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+
+    .registration_input {
+        flex: 3;
+    }
+
+    .registration_input {
+        margin: 15px;
+        margin-bottom: 20px;
+        font-size: 26px;
+    }
+
+    .registration-form-buttons {
+        justify-content: flex-end;
+    }
+}

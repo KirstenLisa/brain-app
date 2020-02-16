@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AppContext from '../../AppContext';
-import './AddTask.css';
+import './AddPost.css';
 
 
 class AddTask extends Component {
@@ -11,15 +11,15 @@ class AddTask extends Component {
     render() {
 
 
-    function taskSubmitHandler() {
+    function postSubmitHandler() {
 
-        console.log('submit task');
+        console.log('submit post');
         
     }
     
     return (
       <section className="add-task-form">
-          <form onSubmit={taskSubmitHandler}>
+          <form onSubmit={postSubmitHandler}>
             <div className="form-control">
               <label htmlFor="title">Title</label>
               <input

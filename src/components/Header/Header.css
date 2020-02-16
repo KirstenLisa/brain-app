@@ -1,0 +1,16 @@
+.logo {
+    height: 50px;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0px;
+    margin-top: 10px;
+  }
+  
+    .Header h1 {
+      margin: 0;
+      font-size: 40px;
+    }
