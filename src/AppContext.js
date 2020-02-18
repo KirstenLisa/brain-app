@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TokenService from './services/token-service';
+import { users, posts, tasks } from './dummystore';
 
 const AppContext = React.createContext({
     usersList: [],
@@ -24,9 +25,9 @@ export default AppContext;
 
 export class ContextProvider extends Component {
   state = {
-    usersList: [],
-    postList: [],
-    taskList: [],
+    usersList: users,
+    postList: posts,
+    taskList: tasks,
     error: null,
     isLoggedIn: false
   };
@@ -56,7 +57,9 @@ export class ContextProvider extends Component {
   };
 
   addPost = newPost => {
+    console.log('inside context');
     this.setPostList([...this.state.postList, newPost]);
+    console.log(this.state.postList)
   };
 
   addTask = newTask => {

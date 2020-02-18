@@ -79,6 +79,7 @@ class LoginForm extends React.Component {
           return null;
         }
         TokenService.saveUsername(userName);
+        //this.context.setCurrentUser(userName);
         this.props.history.push(`/dashboard/1`);
         this.context.setLogin();
       };

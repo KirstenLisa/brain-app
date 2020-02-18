@@ -9,6 +9,7 @@ import LoginPage from './routes/LoginPage/LoginPage';
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage';
 import Dashboard from './routes/Dashboard/Dashboard';
 import TaskList from './routes/TaskList/TaskList';
+import PostPage from './components/PostPage/PostPage';
 import AddPost from './routes/AddPost/AddPost';
 import AddTask from './routes/AddTask/AddTask';
 import AppContext from './AppContext';
@@ -33,6 +34,10 @@ class App extends Component {
         font: 'Ubuntu',
         weights: [400, '400i'],
       },
+      {
+        font: 'Candal',
+        weight: [400, '400i'],
+      }
     ]}
   />
    <header className='App__header'>
@@ -65,6 +70,12 @@ class App extends Component {
               exact
               path={'/tasklist'}
               component={TaskList}
+              />
+
+            <Route
+              exact
+              path={'/posts/:postId'}
+              component={PostPage}
               />
             
             <Route
