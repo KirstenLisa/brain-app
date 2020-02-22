@@ -55,7 +55,7 @@ export const tasks = [
     {
         "task_id": 6,
         "description": "Plant a Tree",
-        "category": "other",
+        "category": "Other",
     },
     {
         "task_id": 7,

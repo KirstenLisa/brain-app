@@ -12,37 +12,48 @@ class Dashboard extends Component {
   static contextType = AppContext;
 
   componentDidMount() {
+   
    //API USERSLIST
    //API POSTLIST
    //API TASKLIST
-   
   }
 
-  doneHandler() {
-    console.log('click')
+  doHandler = (id) => {
+
+    const doTasks = this.context.doTasks;
+    const currentTask = this.context.currentTask;
+    console.log(doTasks, currentTask, id);
+    const newTask = doTasks.filter(task => task == id);
+    console.log(newTask);
+    this.context.addDoTask(currentTask);
+    this.context.setCurrentTask(newTask);
+    this.context.deleteDoTask(id);
+    console.log(this.context.doTasks);
+    
 }
+
 
   render() {
 
-    const users = this.context.usersList;
     const posts = this.context.postList;
     const tasks = this.context.taskList;
+    //const users = this.context.usersList;
     const userId = this.props.match.params.userId;
-    const currentUser = users.filter(user => userId == user.id)
     const userPosts = posts.filter(post => userId == post.user_id);
-    const currentTask = tasks.filter(task => task.task_id == currentUser[0].current_task)
-    const userTasksDo = currentUser[0].do_tasks;
+    const currentTaskId = this.context.currentTask;
+    //const currentUser = users.filter(user => userId == user.id);
+    const currentTask = tasks.filter(task => task.task_id == currentTaskId);
+    const userTasksDo = this.context.doTasks;
     const doTasks = tasks.filter(({task_id}) => userTasksDo.includes(task_id));
-    const userTasksDone = currentUser[0].done_tasks;
+    const userTasksDone = this.context.doneTasks;
     const doneTasks = tasks.filter(({task_id}) => userTasksDone.includes(task_id));
-
-  const username = sessionStorage.getItem('username');
-  console.log(username);
+    
+    const username = sessionStorage.getItem('username');
 
     return (
       <div className='dashboard'>
         <div className='dashboard-header'>
-          <img className='profile-pic' src={currentUser[0].profile_pic}></img>
+          <img className='profile-pic' src={this.context.currentUser.profile_pic}></img>
           <h3 className='welcome-headline'>
             Welcome, {username}! What is today's adventure?
           </h3>
@@ -54,7 +65,6 @@ class Dashboard extends Component {
           <div className='doing-section'>
               <TaskItem 
                 currentTask={currentTask}
-                doneHandler={this.doneHandler}
                 />
           </div>
         </section>
@@ -84,6 +94,7 @@ class Dashboard extends Component {
           <h2 className='dashboard-headline'>TO DO</h2>
           <TaskList 
           tasks={doTasks}
+          doHandler={this.doHandler}
           />
         </section>
 
@@ -91,6 +102,7 @@ class Dashboard extends Component {
           <h2 className='dashboard-headline'>DONE</h2>
           <TaskList 
           tasks={doneTasks}
+          doHandler={this.doHandler}
           />
         </section>
       </div>

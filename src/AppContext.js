@@ -6,6 +6,10 @@ const AppContext = React.createContext({
     usersList: [],
     postList: [],
     taskList: [],
+    currentUser: [],
+    currentTask: [],
+    doTasks: [],
+    doneTasks: [],
     setUsersList: () => {},
     setPostList: () => {},
     setTaskList: () => {},
@@ -18,7 +22,13 @@ const AppContext = React.createContext({
     clearError: () => {},
     error: null,
     isLoggedIn: false,
-    setCurrentUser: () => {}
+    setCurrentUser: () => {},
+    setCurrentTask: () => {},
+    setDoTasks: () => {},
+    setDoneTasks: () => {},
+    addDoTask: () => {},
+    addDoneTask: () => {},
+    deleteDoTask: () => {},
 });
 
 export default AppContext;
@@ -61,7 +71,7 @@ export class ContextProvider extends Component {
     this.setPostList([...this.state.postList, newPost]);
     console.log(this.state.postList)
   };
-
+ 
   addTask = newTask => {
     this.setTaskList([...this.state.taskList, newTask]);
   };
@@ -98,9 +108,46 @@ export class ContextProvider extends Component {
       : this.setState({ isLoggedIn: true });
   };
 
-  setCurrentUser = currentUser => {
+
+  addDoTask = newTask => {
+    this.setDoTasks([...this.state.doTasks, newTask]);
+  };
+
+
+  addDoneTask = newTask => {
+    this.setDoneTasks([...this.state.doneTasks, newTask]);
+  };
+
+  deleteDoTask = id => {
+    const newDoTaskList = this.state.doTasks.filter(
+      task => task.task_id != id
+    );
+    this.setDoTasks(newDoTaskList);
+  }
+
+  setCurrentUser = username => {
+    const currentUser = this.state.usersList.filter(user => user.username == username);
+    console.log(currentUser[0].current_task);
     this.setState({ currentUser });
-    TokenService.saveUser(currentUser);
+    this.setCurrentTask(currentUser[0].current_task);
+    this.setDoTasks(currentUser[0].do_tasks);
+    this.setDoneTasks(currentUser[0].done_tasks);
+    //TokenService.saveUser(currentUser);
+  };
+
+  setCurrentTask = currentTask => {
+    this.setState({ currentTask });
+    console.log(this.state.currentTask)
+  };
+
+  setDoTasks = doTasks => {
+    console.log('setDoTasks');
+    this.setState({ doTasks });
+    console.log(this.state.doTasks);
+  };
+
+  setDoneTasks = doneTasks => {
+    this.setState({ doneTasks });
   };
 
   render() {
@@ -108,6 +155,10 @@ export class ContextProvider extends Component {
         usersList: this.state.usersList,
         postList: this.state.postList,
         taskList: this.state.taskList,
+        currentUser: this.state.currentUser,
+        currentTask: this.state.currentTask,
+        doTasks: this.state.doTasks,
+        doneTasks: this.state.doneTasks,
         setUsersList: this.setUsersList,
         setPostList: this.setPostList,
         setTaskList: this.setTaskList,
@@ -122,7 +173,13 @@ export class ContextProvider extends Component {
         clearError: this.clearError,
         isLoggedIn: this.state.isLoggedIn,
         setLogin: this.setLogin,
-        setCurrentUser: this.setCurrentUser
+        setCurrentUser: this.setCurrentUser,
+        setCurrentTask: this.setCurrentTask,
+        setDoTasks: this.setDoTasks,
+        setDoneTasks: this.setDoneTasks,
+        addDoTask: this.addDoTask,
+        addDoneTask: this.addDoneTask,
+        deleteDoTask: this.deleteDoTask,
     };
     return (
       <AppContext.Provider value={contextValue}>

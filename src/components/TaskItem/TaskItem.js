@@ -3,6 +3,8 @@ import './TaskItem.css';
 
 const TaskItem = (props) => { 
 
+  console.log(props.currentTask);
+
     return(
         <div className='task-item'>
             <h4 className='task-item-headline'>
@@ -10,7 +12,6 @@ const TaskItem = (props) => {
             </h4>
           <button 
             className='task-done'
-            onClick={props.doneHandler}
             >
               Done
           </button>

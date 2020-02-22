@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import Task from '../../components/Task/Task';
 import uuid from 'uuid/v4';
 import './TaskList.css';
 
@@ -8,12 +9,12 @@ class TaskList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasklist: []
+      userTasks: []
     };
   }
 
   componentDidMount () {
-    this.setState({tasklist: this.props.tasks})
+    this.setState({userTasks: this.props.tasks})
   }
 
   getUnique = (arr, comp) => {
@@ -35,12 +36,18 @@ handleCategory = (e, array) => {
   console.log(e.target.value);
   const category = e.target.value;
   const filteredTasks = array.filter(item => item.category == category);
-  this.setState({tasklist: filteredTasks});
+  this.setState({userTasks: filteredTasks});
 };
 
     render() {
       const tasks = this.props.tasks;
-      const tasklist = this.state.tasklist.map((task, i) => (<li key={i} id={task.task_id}>{task.description}</li>))
+      const tasklist = this.state.userTasks.map((task, i) => (<li key={i} id={task.task_id}>
+        <Task 
+          description={task.description}
+          id={task.task_id}
+          doHandler={this.props.doHandler}
+            />
+            </li>))
       const categoriesUnique = this.getUnique(this.props.tasks, 'category');
       const categories = categoriesUnique.map((category, i) => 
           (<button 
