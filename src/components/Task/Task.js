@@ -28,24 +28,26 @@ class Task extends Component {
     render() {
 
     return(
-        <div className='task-item'>
-            <h4 className='task-item-headline'>
+        <div className='task-list-item'>
+            <h4 className='task-list-item-headline'>
                 {this.props.description}
             </h4>
-          <button 
-            className='task-done'
+            <section className='task-button-section'>
+            <button 
+            className='task-do'
             id={this.props.id}
             onClick={e => this.doHandler(e.target.id)}
             >
               Do now
           </button>
           <button 
-            className='task-done'
+            className='task-delete'
             id={this.props.id}
             onClick={e => this.deleteHandler(e.target.id)}
             >
               Delete
           </button>
+            </section>
         </div>
     )
     }

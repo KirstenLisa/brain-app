@@ -1,3 +1,13 @@
 .post-links {
     list-style: none;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.post-list-item {
+    color: #223454 !important;
+}
+
+.post-list-headline {
+    font-size: 24px;
 }

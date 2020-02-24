@@ -2,18 +2,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 26px;
-    color: #104D73;
+    font-size: 22px;
+    color: #223454;
 }
 
 .add-content-input, .add-pic-input {
     background-color: white;
-    border: 1px solid #104D73;
+    border: 1px solid #223454;
     border-radius: 3px;
     margin: 5px;
     margin-bottom: 20px;
-    padding-left: 5px;
-    font-size: 22px;
+    padding: 6px;
+    font-size: 20px;
     height: 40px;
     width: 90%;
 }
@@ -23,8 +23,8 @@
 }
 
 .add-post-button{
-    background-color: #208C65;
-    border: 2px solid  #208C65;
+    background-color: #3966BF;
+    border: 2px solid  #3966BF;
     width: 100px;
 }
 

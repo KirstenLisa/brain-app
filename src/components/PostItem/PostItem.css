@@ -1,0 +1,9 @@
+.post-item {
+    background-color: white;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.post-pic {
+    width: 100%;
+}

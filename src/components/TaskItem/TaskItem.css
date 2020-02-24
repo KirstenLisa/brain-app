@@ -1,0 +1,21 @@
+.task-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.task-item-headline {
+    font-size: 28px;
+    margin: 20px;
+}
+
+.task-done {
+    background-color: #3966BF;
+    margin-bottom: 20px;
+}
+
+.task-done:hover {
+    background-color: #223454;
+}
+

@@ -1,0 +1,27 @@
+.task-list-item {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    background-color: white;
+    margin-bottom: 20px;
+    border-radius: 3px;
+}
+
+.task-list-item-headline {
+    font-size: 20px;
+}
+
+.task-button-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-delete, .task-do {
+    background-color: #F2C53D;
+    border-radius: 2px;
+    border: 2px solid #223454;
+    font-size: 20px;
+}
+

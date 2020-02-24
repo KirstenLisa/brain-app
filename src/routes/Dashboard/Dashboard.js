@@ -48,6 +48,11 @@ class Dashboard extends Component {
 
         <section className='current-task-section'>
 
+        <div className='doing-section'>
+              <TaskItem 
+                currentTask={currentTask}
+                />
+          </div>
           <div className='add-task-buttons'>
             <button className='add-task-button'>
               <Link to={`/newtask/${userId}`}>
@@ -56,15 +61,9 @@ class Dashboard extends Component {
             </button>
             <button className='add-task-list-button'>
               <Link to={`/tasklist/${userId}`}>
-              Add Task From List
+              Task List
               </Link>
             </button>
-          </div>
-
-          <div className='doing-section'>
-              <TaskItem 
-                currentTask={currentTask}
-                />
           </div>
         </section>
 

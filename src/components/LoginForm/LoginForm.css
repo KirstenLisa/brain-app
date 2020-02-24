@@ -2,11 +2,11 @@
     display: block;
     font-size: 26px;
     text-align: left;
-    color: #261010;
-    background-color: #BF9D95;
+    color: white;
+    background-color: #3966BF;
     padding: 15px;
     margin-bottom: 15px;
-    border: 1px solid #BF9D95;
+    border: 1px solid #3966BF;
     border-radius: 5px;
 }
 
@@ -14,12 +14,12 @@
     background-color: white;
     margin: 5px;
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 22px;
     width: 90%;
-    border: 1px solid #BF9D95;
-    color: #261010;
+    border: 1px solid #3966BF;
+    color: #223454;
     border-radius: 3px;
-    padding-left: 5px;
+    padding: 6px;
 }
 
 .login-form-buttons {
@@ -32,16 +32,14 @@
     color: white; 
 }
 
-.loginButton {
-    background-color: #027368;
-    border: 2px solid  #027368;
+.loginButton, .cancelButton {
+    background-color: #F24182;
+    border: 2px solid  #F2C53D;
     width: 100px;
 }
 
-.cancelButton {
-    background-color: #027368;
-    border: 2px solid  #027368;
-    width: 100px;
+.candelbutton, .loginButton:hover {
+    background-color: #F2C53D;
 }
 
 .error, .loginError {

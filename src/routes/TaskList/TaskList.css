@@ -1,3 +1,36 @@
 .task-list {
     list-style: none;
 }
+
+.category-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0px;
+    padding: 5px;
+}
+
+.Mind, .Soul, .Body, .Other {
+    margin: 5px;
+    border-radius: 3px;
+}
+
+.Mind {
+    background-color: #F25D27;
+    border: 2px solid #F25D27;
+}
+
+.Soul {
+    background-color: #F2C53D;
+    border: 2px solid #223454;
+}
+
+.Body {
+    background-color: #F24182;
+    border: 2px solid #F24182;
+}
+
+.Other {
+    background-color: #3966BF;
+    border: 2px solid #3966BF;
+}

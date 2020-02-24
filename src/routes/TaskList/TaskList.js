@@ -51,6 +51,7 @@ handleCategory = (e, array) => {
       const categoriesUnique = this.getUnique(this.props.tasks, 'category');
       const categories = categoriesUnique.map((category, i) => 
           (<button 
+            className={category.category}
             id={uuid()}
             value={category.category}
             onClick={e => this.handleCategory(e, tasks)}>

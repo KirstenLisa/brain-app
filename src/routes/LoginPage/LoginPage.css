@@ -1,0 +1,11 @@
+.LoginPage > p {
+    font-size: 18px;
+}
+
+.register-link {
+    font-size: 22px;
+}
+
+.register-link:hover {
+    font-size: 25px;
+}

@@ -9,3 +9,25 @@
     width: 70px;
     border-radius: 50%;
 }
+
+.add-task-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: white;
+    margin-top: 30px;
+}
+
+.add-task-button, .add-task-list-button {
+    background-color: #3966BF;
+}
+
+.doing-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    background-color: #F24182;
+    border-radius: 3px;
+}
+

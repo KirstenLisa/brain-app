@@ -1,5 +1,5 @@
 .Header {
-  background-color: #027368;
+  background-color: #F24182;
   color: white;
   padding: 10px 20px 10px 20px;
 }
@@ -9,11 +9,12 @@ a:-webkit-any-link {
 }
 
 a:hover {
-  color: #261010;
+  color: #223454;
 }
 
 .logo {
     height: 50px;
+    border-radius: 3px;
 }
 
 nav {

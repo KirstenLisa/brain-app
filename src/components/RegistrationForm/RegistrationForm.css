@@ -1,23 +1,24 @@
 .registration-form {
     display: block;
     font-size: 26px;
-    color: #104D73;
-    background-color: lightgray;
+    color: white;
+    background-color: #3966BF;
     padding: 15px;
     margin-bottom: 15px;
-    border: 1px solid lightgray;
+    border: 1px solid #3966BF;
     border-radius: 5px;
 }
 
 
 .registration_input {
     display: block;
-    border: 1px solid #104D73;
+    border: 1px solid #3966BF;
     border-radius: 3px;
-    margin: 5px 0px 20px 5px;
-    font-size: 20px;
+    margin: 5px 5px 20px 5px;
+    font-size: 22px;
     background-color: white;
     width: 95%;
+    padding: 6px;
 }
 
 .registration-form-buttons {
@@ -35,14 +36,14 @@ button {
     margin: 10px;
 }
 
-.submitRegistration {
-    background-color: gray;
-    border: 2px solid  gray;
+.submitRegistration, .cancelRegistration {
+    background-color: #F24182;
+    border: 2px solid  #F2C53D;
 }
 
-.cancelRegistration {
-    background-color: pink;
-    border: 2px solid pink;
+.submitRegistration:hover, .cancelRegistration:hover {
+    background-color: #F2C53D;
+    border: 2px solid #F2C53D;
 }
 
 .error, .registrationError {
