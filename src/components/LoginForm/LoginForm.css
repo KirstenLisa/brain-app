@@ -2,11 +2,11 @@
     display: block;
     font-size: 26px;
     text-align: left;
-    color: #104D73;
-    background-color: grey;
+    color: #261010;
+    background-color: #BF9D95;
     padding: 15px;
     margin-bottom: 15px;
-    border: 1px solid grey;
+    border: 1px solid #BF9D95;
     border-radius: 5px;
 }
 
@@ -16,7 +16,8 @@
     margin-bottom: 20px;
     font-size: 20px;
     width: 90%;
-    border: 1px solid grey;
+    border: 1px solid #BF9D95;
+    color: #261010;
     border-radius: 3px;
     padding-left: 5px;
 }
@@ -32,14 +33,14 @@
 }
 
 .loginButton {
-    background-color: darkgray;
-    border: 2px solid  darkgray;
+    background-color: #027368;
+    border: 2px solid  #027368;
     width: 100px;
 }
 
 .cancelButton {
-    background-color: pink;
-    border: 2px solid  pink;
+    background-color: #027368;
+    border: 2px solid  #027368;
     width: 100px;
 }
 

@@ -14,6 +14,12 @@ class PostPage extends Component {
         this.props.history.push(`/dashboard/1`);
     }
 
+    editPost = e => {
+        e.preventDefault();
+        const { userId, postId } = this.props.match.params;
+        this.props.history.push(`/editpost/${userId}/${postId}`)
+    }
+
     render() {
 
         const { postId } = this.props.match.params;
@@ -39,9 +45,12 @@ class PostPage extends Component {
                         onClick={this.handlePostDelete}>
                         Delete
                     </button>
-                    <button>
-                        Add Post
-                    </button>
+                    <button 
+                        onClick={this.editPost}
+                        >
+                            Edit
+                        </button>
+                   
                 </div>
             </div>
         );

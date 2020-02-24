@@ -5,10 +5,11 @@ import './PostList.css';
 class PostList extends Component {
 
     render() {
-      console.log(this.props.postList)
+      const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+      const userId = currentUser[0].id;
       const postList = this.props.postList.map((post, i) => 
                         <li className='post-list-item' id={post.post_id} key={i}>
-                          <Link to={`/posts/${post.post_id}`}>
+                          <Link to={`/posts/${userId}/${post.post_id}`}>
                           {post.content}
                           </Link>
                           </li>);

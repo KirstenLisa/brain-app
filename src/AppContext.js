@@ -73,6 +73,7 @@ export class ContextProvider extends Component {
   };
  
   addTask = newTask => {
+    console.log(newTask);
     this.setTaskList([...this.state.taskList, newTask]);
   };
 
@@ -110,6 +111,7 @@ export class ContextProvider extends Component {
 
 
   addDoTask = newTask => {
+    console.log(newTask);
     this.setDoTasks([...this.state.doTasks, newTask]);
   };
 
@@ -119,8 +121,9 @@ export class ContextProvider extends Component {
   };
 
   deleteDoTask = id => {
+    console.log('delete task');
     const newDoTaskList = this.state.doTasks.filter(
-      task => task.task_id != id
+      task => task != id
     );
     this.setDoTasks(newDoTaskList);
   }
@@ -132,6 +135,7 @@ export class ContextProvider extends Component {
     this.setCurrentTask(currentUser[0].current_task);
     this.setDoTasks(currentUser[0].do_tasks);
     this.setDoneTasks(currentUser[0].done_tasks);
+    TokenService.saveUserObj(currentUser);
     //TokenService.saveUser(currentUser);
   };
 
@@ -141,7 +145,7 @@ export class ContextProvider extends Component {
   };
 
   setDoTasks = doTasks => {
-    console.log('setDoTasks');
+    console.log(doTasks);
     this.setState({ doTasks });
     console.log(this.state.doTasks);
   };

@@ -8,10 +8,11 @@ import LandingPage from './routes/LandingPage/LandingPage';
 import LoginPage from './routes/LoginPage/LoginPage';
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage';
 import Dashboard from './routes/Dashboard/Dashboard';
-import TaskList from './routes/TaskList/TaskList';
+import AllTasks from './routes/AllTasks/AllTasks';
 import PostPage from './components/PostPage/PostPage';
 import AddPost from './routes/AddPost/AddPost';
 import AddTask from './routes/AddTask/AddTask';
+import EditPost from './routes/EditPost/EditPost';
 import AppContext from './AppContext';
 import './App.css'
 
@@ -68,13 +69,13 @@ class App extends Component {
 
             <Route
               exact
-              path={'/tasklist'}
-              component={TaskList}
+              path={'/tasklist/:userId'}
+              component={AllTasks}
               />
 
             <Route
               exact
-              path={'/posts/:postId'}
+              path={'/posts/:userId/:postId'}
               component={PostPage}
               />
             
@@ -83,10 +84,16 @@ class App extends Component {
               path={'/addPost/:userId/'}
               component={AddPost}
               />
+            
+            <Route 
+              exact
+              path={'/editpost/:userId/:postId'}
+              component={EditPost}
+              />
 
             <Route
               exact
-              path={'/addTask'}
+              path={'/newtask/:userId'}
               component={AddTask}
               />
         

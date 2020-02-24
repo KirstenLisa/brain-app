@@ -24,6 +24,10 @@ const TokenService = {
   clearUsername() {
     return window.sessionStorage.removeItem('username');
   },
+
+  saveUserObj(obj) {
+    window.sessionStorage.setItem('userObj', JSON.stringify(obj));
+  }
 };
 
 export default TokenService;

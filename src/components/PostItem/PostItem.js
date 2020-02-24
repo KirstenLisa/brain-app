@@ -6,11 +6,12 @@ import './PostItem.css';
 const PostItem = (props) => {
 
     const postId = props.currentPost.post_id;
+    const userId = props.userId;
 
     return(
         <div className='post-item'>
             <Link
-                to={`/posts/${postId}`}
+                to={`/posts/${userId}/${postId}`}
                 >
                 <img 
                     className='post-pic'
