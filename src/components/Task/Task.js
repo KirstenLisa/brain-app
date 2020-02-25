@@ -15,11 +15,10 @@ class Task extends Component {
     doHandler = (id) => {
       console.log(id);
       const doTasks = this.context.doTasks;
-      const currentTask = this.context.currentTask;
-      console.log(doTasks, currentTask, id);
+      const currentTaskId = this.context.currentTask;
+      console.log(doTasks, currentTaskId, id);
       const newTask = doTasks.filter(task => task == id);
-      console.log(newTask);
-      this.context.addDoTask(currentTask);
+      this.context.addDoTask(currentTaskId);
       this.context.setCurrentTask(newTask);
       this.context.deleteDoTask(id);
       console.log(this.context.doTasks);  

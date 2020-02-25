@@ -17,6 +17,7 @@ const AppContext = React.createContext({
     addPost: () => {},
     addTask: () => {},
     deletePost: () => {},
+    updatePost: () => {},
     deleteTask: () => {},
     setLogin: () => {},
     clearError: () => {},
@@ -29,6 +30,7 @@ const AppContext = React.createContext({
     addDoTask: () => {},
     addDoneTask: () => {},
     deleteDoTask: () => {},
+    deleteCurrentTask: () => {}
 });
 
 export default AppContext;
@@ -93,13 +95,14 @@ export class ContextProvider extends Component {
     this.setTaskList(newTaskList);
   };
 
-  updateTask = updatedTask => {
-    const newTaskList = this.state.taskList.map(task =>
-      task.task_id == updatedTask.task_id ? updatedTask : task
+  updatePost = updatedPost => {
+    const newPostList = this.state.postList.map(post =>
+      post.post_id == updatedPost.post_id ? updatedPost : post
     );
     this.setState({
-      taskList: [...newTaskList]
+      postList: [...newPostList]
     });
+    console.log(this.state.postList);
   };
 
   setLogin = () => {
@@ -141,17 +144,21 @@ export class ContextProvider extends Component {
 
   setCurrentTask = currentTask => {
     this.setState({ currentTask });
-    console.log(this.state.currentTask)
+    console.log(this.state.currentTask);
+  };
+
+  deleteCurrentTask = () => {
+    this.setState({ currentTask: ''});
   };
 
   setDoTasks = doTasks => {
     console.log(doTasks);
     this.setState({ doTasks });
-    console.log(this.state.doTasks);
   };
 
   setDoneTasks = doneTasks => {
     this.setState({ doneTasks });
+    console.log(this.state.doneTasks);
   };
 
   render() {
@@ -171,7 +178,7 @@ export class ContextProvider extends Component {
         addTask: this.addTask,
         deletePost: this.deletePost,
         deleteTask: this.deleteTask,
-        updateTask: this.updateTask,
+        updatePost: this.updatePost,
         error: this.state.error,
         setError: this.setError,
         clearError: this.clearError,
@@ -184,6 +191,7 @@ export class ContextProvider extends Component {
         addDoTask: this.addDoTask,
         addDoneTask: this.addDoneTask,
         deleteDoTask: this.deleteDoTask,
+        deleteCurrentTask: this.deleteCurrentTask
     };
     return (
       <AppContext.Provider value={contextValue}>

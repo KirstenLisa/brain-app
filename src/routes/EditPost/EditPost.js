@@ -10,16 +10,16 @@ class EditHomework extends React.Component {
     super(props);
     this.state = {
       content: { value: '', touched: false },
-      post_pic: { value: '' },
+      post_pic: ''
     };
   }
 
   componentDidMount() {
     const { postId } = this.props.match.params;
     const currentPost = this.context.postList.filter(post => post.post_id == postId);
-    console.log(currentPost);
+    console.log(currentPost[0].profile_pic);
     this.setState({
-        content: currentPost[0].content,
+        content: { value: currentPost[0].content, touched: false },
         post_pic: currentPost[0].post_pic
     })
   }
@@ -38,6 +38,10 @@ class EditHomework extends React.Component {
     this.setState({ content: { value: content, touched: true } });
   }
 
+  updatePic() {
+    console.log('upload new pic');
+  }
+
   validateForm() {
     if (this.validateContent()) {
       this.setState({ content: { touched: true } });
@@ -46,15 +50,17 @@ class EditHomework extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { post_id, user_id } = this.props.match.params;
+    const { postId, userId } = this.props.match.params;
+    console.log(this.props.match.params);
 
-    const { content, profile_pic } = e.target;
+    const { content, post_pic } = e.target;
 
     const updatedPost = {
-      post_id: post_id,
-      user_id: user_id,
+      post_id: postId,
+      user_id: userId,
       content: content.value,
-      profile_pic: profile_pic.value
+      post_pic: this.state.post_pic,
+      date: new Date()
     };
 
     if (this.validateForm()) {
@@ -63,9 +69,16 @@ class EditHomework extends React.Component {
     if (this.validateContent()) {
       return null;
     }
+
+    console.log(updatedPost);
+
+    this.context.updatePost(updatedPost);
+    this.props.history.push(`/dashboard/${userId}`);
   }
 
   render() {
+
+    console.log(this.state.content)
 
     return (
       <form className='edit-post-form' onSubmit={e => this.handleSubmit(e)}>
@@ -74,15 +87,19 @@ class EditHomework extends React.Component {
         </div>
         <h2>Not happy with your post? Edit it!</h2>
 
+        <div className='post-pic-display'>
+          <img className='post-pic-display' alt='post-pic' src={ this.state.post_pic }></img>
+        </div>
+
         <div className='edit-pic'>
           <label htmlFor=''>Pic</label>
           <textarea
             type='text'
-            className='edit_content_input'
-            name='content'
-            id='content'
-            value={this.state.content.value}
-            onChange={e => this.updateContent(e.target.value)}
+            className='edit_pic_input'
+            name='post-pic'
+            id='post-pic'
+            value={this.state.post_pic}
+            onChange={e => this.updatePic(e.target.value)}
             aria-required='true'
           />
         </div>
@@ -118,7 +135,7 @@ class EditHomework extends React.Component {
             Cancel
           </button>
 
-          <button type='submit' className='submitEditHomework'>
+          <button type='submit' className='edit-post'>
             Save
           </button>
         </div>

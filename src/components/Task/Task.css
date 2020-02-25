@@ -21,7 +21,8 @@
 .task-delete, .task-do {
     background-color: #F2C53D;
     border-radius: 2px;
-    border: 2px solid #223454;
+    border: 2px solid #F2C53D;
     font-size: 20px;
+    color: #223454;
 }
 

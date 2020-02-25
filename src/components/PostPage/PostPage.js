@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { format } from 'date-fns';
 import AppContext from '../../AppContext';
+import './PostPage.css';
 
 class PostPage extends Component {
 
@@ -9,9 +10,9 @@ class PostPage extends Component {
     handlePostDelete = e => {
         e.preventDefault();
         console.log('delete post');
-        const { postId } = this.props.match.params;
+        const { userId, postId } = this.props.match.params;
         this.context.deletePost(postId);
-        this.props.history.push(`/dashboard/1`);
+        this.props.history.push(`/dashboard/${userId}`);
     }
 
     editPost = e => {
@@ -42,10 +43,12 @@ class PostPage extends Component {
                     (<p className='post-page-date'>{format(new Date(currentPost[0].date), 'do MMM yyyy')}</p>)}
                 <div className='post-page-buttons'>
                     <button
+                        className='delete-post-button'
                         onClick={this.handlePostDelete}>
                         Delete
                     </button>
                     <button 
+                        className='edit-post-button'
                         onClick={this.editPost}
                         >
                             Edit

@@ -38,7 +38,7 @@
     width: 100px;
 }
 
-.candelbutton, .loginButton:hover {
+.cancelbutton:hover, .loginButton:hover {
     background-color: #F2C53D;
 }
 

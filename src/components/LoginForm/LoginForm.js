@@ -68,6 +68,9 @@ class LoginForm extends React.Component {
         const { username, password } = e.target;
     
         const userName = username.value;
+        const user = this.context.usersList.filter(user => user.username == userName);
+        const userId = user[0].id;
+        console.log(userId);
     
         if (this.validateForm()) {
           return null;
@@ -80,7 +83,7 @@ class LoginForm extends React.Component {
         }
         TokenService.saveUsername(userName);
         this.context.setCurrentUser(userName);
-        this.props.history.push(`/dashboard/1`);
+        this.props.history.push(`/dashboard/${userId}`);
         this.context.setLogin();
       };
     

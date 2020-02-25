@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AppContext from '../../AppContext';
 import ValidationError from '../../components/ValidationError';
-import uuid from 'uuid/v4';
 import PropTypes from 'prop-types';
 import config from '../../config';
 import './AddTask.css';
@@ -48,7 +47,7 @@ class AddTask extends Component {
           validateSelection() {
               const selectedCategory = this.state.category.value;
               console.log('selectedCategory:' + selectedCategory);
-              if(selectedCategory === "None" || selectedCategory === '') {
+              if(selectedCategory === "None" || selectedCategory === '' || selectedCategory === undefined) {
                 return 'Category is required';
               }
           }
@@ -120,17 +119,17 @@ class AddTask extends Component {
             const categoryError = this.validateSelection();
     
             return(
-                <form className="addTaskForm" onSubmit={e => this.handleSubmit(e)}>
-                    <div className='addTask_error' role='alert'>
+                <form className="add-task-form" onSubmit={e => this.handleSubmit(e)}>
+                    <div className='add-task_error' role='alert'>
                     {error && <p>{error.message}</p>}
                     </div>
                     <h2>Create a new task</h2>
                     
-                    <div className="form-group">
+                    <div className="description">
                         <label htmlFor="description">Description</label>
                         <input
                             type="text"
-                            className="registration_control"
+                            className="description-input"
                             name="description"
                             id="description"
                             onChange={e => this.updateDescription(e.target.value)}
@@ -154,14 +153,14 @@ class AddTask extends Component {
                         <ValidationError message={categoryError} id="categoryError"/>)}
                     </div>
     
-                    <div className="task_button_group">
-                        <button type='button' onClick={() => this.props.history.push('/dashboard/1')}>
+                    <div className="task-button-group">
+                        <button type='button' className='cancel-task-button' onClick={() => this.props.history.push('/dashboard/1')}>
                             Cancel
                         </button>
                
                         <button
                             type="submit"
-                            className="save_button">
+                            className="save-task-button">
                                 Save
                         </button>
                     </div>

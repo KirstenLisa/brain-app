@@ -19,6 +19,12 @@ class Dashboard extends Component {
    //API TASKLIST
   }
 
+  doneHandler = (e) => {
+    const id = parseInt(e.id);
+    this.context.addDoneTask(id);
+    this.context.deleteCurrentTask();
+  }
+
   render() {
 
     const posts = this.context.postList;
@@ -51,6 +57,7 @@ class Dashboard extends Component {
         <div className='doing-section'>
               <TaskItem 
                 currentTask={currentTask}
+                doneHandler={this.doneHandler}
                 />
           </div>
           <div className='add-task-buttons'>

@@ -4,28 +4,47 @@
     max-width: 80%;
   }
   
-  .form-control label,
-  .form-control input {
+  .description, .category-select {
     display: block;
     width: 100%;
   }
   
-  .form-control input {
-    font: inherit;
-    padding: 0.1rem 0.25rem;
-    border: none;
-    border-bottom: 2px solid #ccc;
-    margin-bottom: 1rem;
+  .description-input {
+    background-color: white;
+    margin: 5px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    width: 90%;
+    border: 1px solid #3966BF;
+    color: #223454;
+    border-radius: 3px;
+    padding: 6px;
   }
-  
-  .form-control input:focus {
-    outline: none;
-    border-bottom-color: #ff2058;
-  }
-  
-  .ingredient-form__actions {
+
+.task-button-group {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 23px;
+    border-radius: 3px;
+    margin: 10px;
+    color: white; 
+}
+
+.save-task-button, .cancel-task-button{
+    background-color: #F24182;
+    border: 2px solid  #F2C53D;
+    width: 100px;
+}
+
+.save-task-button:hover, .cancel-task-button:hover {
+    background-color: #F2C53D;
+}
+
+.error {
+    color: #F20F38;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Roboto, sans-serif;
+    
+}

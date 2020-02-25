@@ -1,0 +1,61 @@
+.edit-post-form {
+    display: block;
+    font-size: 26px;
+    text-align: left;
+    color: white;
+    background-color: #3966BF;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #3966BF;
+    border-radius: 5px;
+  }
+  
+  .edit-pic, .edit-content {
+    display: block;
+    width: 100%;
+    font-size: 22px;
+  }
+  
+  .edit_content_input, .edit_pic_input {
+    background-color: white;
+    margin: 5px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    width: 90%;
+    border: 1px solid #3966BF;
+    color: #223454;
+    border-radius: 3px;
+    padding: 6px;
+  }
+
+.update_button_group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 23px;
+    border-radius: 3px;
+    margin: 10px;
+    color: white; 
+}
+
+.edit-post, .cancel-edit-post {
+    background-color: #F24182;
+    border: 2px solid  #F2C53D;
+    width: 100px;
+}
+
+.submit-edit-post:hover, .cancel-edit-post:hover {
+    background-color: #F2C53D;
+}
+
+.error {
+    color: #F20F38;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Roboto, sans-serif;
+    
+}
+
+.post-pic-display {
+    width: 100%;
+}
