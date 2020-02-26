@@ -8,13 +8,13 @@
     color: white; 
 }
 
-.delete-post-button, .edit-post-button {
+.delete-post-button, .edit-post-button, .back-button {
     background-color: #F24182;
     border: 2px solid  #F24182;
     width: 100px;
 }
 
-.delete-post-button:hover, .edit-post-button:hover {
+.delete-post-button:hover, .edit-post-button:hover, .back-button:hover {
     background-color: #F2C53D;
     border: 2px solid  #F24182;
 }

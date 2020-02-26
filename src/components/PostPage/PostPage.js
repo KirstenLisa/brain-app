@@ -53,6 +53,12 @@ class PostPage extends Component {
                         >
                             Edit
                         </button>
+                        <button 
+                        className='back-button'
+                        onClick={this.props.history.back()}
+                        >
+                            Back
+                        </button>
                    
                 </div>
             </div>

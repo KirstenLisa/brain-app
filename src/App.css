@@ -3,6 +3,7 @@
     padding: 10px 20px 40px 20px;
     background-color: #F2C53D;
     color: #223454;
+    min-height: 100vh;
 }
 
 h1 {

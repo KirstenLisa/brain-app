@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './LandingPage.css';
 
 const LandingPage = () => {
@@ -12,13 +13,15 @@ const LandingPage = () => {
         <h3>Test Users</h3>
         <ul className='testUserList'>
           <li className='testUsers'>
-            <p>Username: </p>
-            <p>Password: </p>
+            <p>Username 1: fluffy_rabbit</p>
+            <p>Username 2: Dulli</p>
+            <p>Password: more tha 8 characters, no backend authentication yet</p>
           </li>
         </ul>
         <p>
-          How the app works
+          Train your brain muscles by doing everyday something new. Choose from a list of tasks or create your own individual bucket list. But make ii easy: Choose only tasks that you can do in ONE DAY.
         </p>
+        <p className='call-to-action'>Yal-la! <Link className='yalla-login' to='./login'>Let's do this</Link></p>
       </div>
     </div>
   );

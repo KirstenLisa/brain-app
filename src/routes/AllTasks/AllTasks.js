@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import AppContext from '../../AppContext';
+import './AllTasks.css';
 
 class AllTasks extends Component {
 
@@ -51,7 +51,7 @@ class AllTasks extends Component {
 
     render() {
 
-        const allTasks = this.state.temporaryList.map(task => <li key={task.task_id}>
+        const allTasks = this.state.temporaryList.map(task => <li className='add-task-list-li' key={task.task_id}>
             {task.description}
             <button className='add-button' type='button' id={task.task_id} onClick={(e) => this.handleAddTask(e.target)}>Add</button></li>);
         const { userId } = this.props.match.params;

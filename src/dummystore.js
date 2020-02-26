@@ -166,30 +166,44 @@ export const posts = [
     {
         "post_id": 7,
         "user_id": 2,
-        "content": "content post 7",
-        "post_pic": "",
+        "content": "Nothing is too big for me. Watch out!",
+        "post_pic": require('./images/dulli_stick.jpeg'),
         "date":  "2020-01-27T16:28:32.615Z"
     },
     {
         "post_id": 8,
         "user_id": 2,
-        "content": "content post 8",
-        "post_pic": "",
+        "content": "Mood on a cloudy day...",
+        "post_pic": require('./images/dulli_beach.jpeg'),
         "date":  "2020-01-28T16:28:32.615Z"
     },
     {
         "post_id": 9,
         "user_id": 2,
-        "content": "content post 9",
-        "post_pic": "",
+        "content": "Feeling sexy...",
+        "post_pic": require('./images/dulli_sofa.jpeg'),
         "date":  "2020-01-29T16:28:32.615Z"
     },
     {
         "post_id": 10,
         "user_id": 2,
-        "content": "content post 10",
-        "post_pic": "",
+        "content": "Digging for gold, losers. BLING BLING",
+        "post_pic": require('./images/dulli_sunset.jpeg'),
         "date":  "2020-01-30T16:28:32.615Z"
     },
+    {
+        "post_id": 11,
+        "user_id": 2,
+        "content": "SO SAAAAAD :-(",
+        "post_pic": require('./images/dulli_tired.jpeg'),
+        "date":  "2020-01-30T16:28:32.615Z"
+    },
+    {
+        "post_id": 12,
+        "user_id": 2,
+        "content": "Travelling to the best places. What about you?",
+        "post_pic": require('./images/dulli_hill.jpeg'),
+        "date":  "2020-01-30T16:28:32.615Z"
+    }
 ]
 
