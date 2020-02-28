@@ -15,11 +15,11 @@ const LandingPage = () => {
           <li className='testUsers'>
             <p>Username 1: fluffy_rabbit</p>
             <p>Username 2: Dulli</p>
-            <p>Password: more tha 8 characters, no backend authentication yet</p>
+            <p>Password: Any 8 characters, no backend authentication yet</p>
           </li>
         </ul>
         <p>
-          Train your brain muscles by doing everyday something new. Choose from a list of tasks or create your own individual bucket list. But make ii easy: Choose only tasks that you can do in ONE DAY.
+          Train your brain muscles by doing everyday something new. Choose from a list of tasks or create your own individual bucket list. But keep it simple: Choose only tasks that you can do in ONE DAY.
         </p>
         <p className='call-to-action'>Yal-la! <Link className='yalla-login' to='./login'>Let's do this</Link></p>
       </div>

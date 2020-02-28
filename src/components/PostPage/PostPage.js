@@ -23,7 +23,7 @@ class PostPage extends Component {
 
     render() {
 
-        const { postId } = this.props.match.params;
+        const { postId, userId } = this.props.match.params;
         const posts = this.context.postList;
         const currentPost = posts.filter(post => post.post_id == postId);
         console.log(currentPost);
@@ -55,7 +55,7 @@ class PostPage extends Component {
                         </button>
                         <button 
                         className='back-button'
-                        onClick={this.props.history.back()}
+                        onClick={() => this.props.history.push(`/dashboard/${userId}`)}
                         >
                             Back
                         </button>
