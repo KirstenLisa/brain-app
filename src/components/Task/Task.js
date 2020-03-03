@@ -1,27 +1,40 @@
 import React, { Component } from 'react';
 import AppContext from '../../AppContext';
+import UsersApiService from '../../services/users-api-service';
 import './Task.css';
-import { tasks } from '../../dummystore';
 
 class Task extends Component {
 
     static contextType = AppContext;
 
-    deleteHandler = (id) => {
-      console.log(id);
-      this.context.deleteDoTask(id);
+    deleteHandler = (taskId) => {
+      console.log(taskId);
+      const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+      const username = currentUser.username;
+      const doTasks = currentUser.do_tasks;
+      const newDoTasks = doTasks.filter(task => task != taskId);
+      console.log(newDoTasks);
+      const updatedUser = { ...currentUser, do_tasks: newDoTasks };
+      UsersApiService.updateUser(username, updatedUser)
+        .then(this.context.setCurrentUser)
+        .catch(this.context.setError);
     };
 
     doHandler = (id) => {
-      console.log(id);
-      const doTasks = this.context.doTasks;
+      const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+      const username = currentUser.username;
       const currentTaskId = this.context.currentTask;
-      console.log(doTasks, currentTaskId, id);
+      const doTasks = [ ...this.context.doTasks, currentTaskId ];
+      console.log(doTasks);
       const newTask = doTasks.filter(task => task == id);
-      this.context.addDoTask(currentTaskId);
-      this.context.setCurrentTask(newTask);
-      this.context.deleteDoTask(id);
-      console.log(this.context.doTasks);  
+      const newCurrentTask = parseInt(newTask);
+      const newDoTasks = doTasks.filter(task => task != id);
+      console.log(newDoTasks);
+      console.log(currentUser);
+      const updatedUser = {...currentUser, do_tasks: newDoTasks, current_task: newCurrentTask};
+      UsersApiService.updateUser(username, updatedUser)
+        .then(this.context.setCurrentUser)
+        .catch(this.context.setError);  
   }
      
     render() {

@@ -2,6 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import AppContext from '../../AppContext';
 import TokenService from '../../services/token-service';
+import UsersApiService from '../../services/users-api-service';
+import AuthApiService from '../../services/auth-api-service';
 import ValidationError from '../ValidationError';
 import './LoginForm.css';
 
@@ -21,7 +23,9 @@ class LoginForm extends React.Component {
     
     componentDidMount() {
         this.context.clearError();
-        // API SERVICES HERE
+        UsersApiService.getUsers()
+        .then(this.context.setUsersList)
+        .catch(this.context.setError);
       }
     
       updateUsername(username) {
@@ -81,10 +85,28 @@ class LoginForm extends React.Component {
         ) {
           return null;
         }
-        TokenService.saveUsername(userName);
-        this.context.setCurrentUser(userName);
-        this.props.history.push(`/dashboard/${userId}`);
-        this.context.setLogin();
+
+        AuthApiService.postLogin({
+          username: username.value,
+          password: password.value
+        })
+          .then(res => {
+            username.value = '';
+            password.value = '';
+            TokenService.saveAuthToken(res.authToken);
+            UsersApiService.getUser(userName)
+            .then(this.context.setCurrentUser(userName));
+            TokenService.saveUsername(userName);
+            this.props.history.push(`/dashboard/${userId}`);
+            this.context.setLogin();
+          })
+          .catch(res => {
+            this.setState({
+            error: {
+            message: res.error
+          }
+        });
+      });
       };
     
       render() {

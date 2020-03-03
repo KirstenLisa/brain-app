@@ -13,8 +13,9 @@ class TaskList extends Component {
     };
   }
 
-  componentDidMount () {
-    this.setState({userTasks: this.props.tasks})
+   componentDidMount () {
+     console.log(this.props.tasks)
+     this.setState({userTasks: this.props.tasks})
   }
 
   getUnique = (arr, comp) => {
@@ -41,6 +42,8 @@ handleCategory = (e, array) => {
 
     render() {
       const tasks = this.props.tasks;
+      console.log(tasks)
+      console.log(this.state.userTasks)
       const tasklist = this.state.userTasks.map((task, i) => (<li key={i} id={task.task_id}>
         <Task 
           description={task.description}

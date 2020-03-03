@@ -6,7 +6,7 @@ class PostList extends Component {
 
     render() {
       const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
-      const userId = currentUser[0].id;
+      const userId = currentUser.id;
       const postList = this.props.postList.map((post, i) => 
                         <li className='post-list-item' id={post.post_id} key={i}>
                           <Link to={`/posts/${userId}/${post.post_id}`}>

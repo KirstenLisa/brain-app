@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import AppContext from '../../AppContext';
 import ValidationError from '../../components/ValidationError';
 import PropTypes from 'prop-types';
+import UsersApiService from '../../services/users-api-service';
+import TasksApiService from '../../services/tasks-api-service';
 import config from '../../config';
 import './AddTask.css';
 
@@ -92,18 +94,20 @@ class AddTask extends Component {
             
     
             const newTask = {
-                task_id: new Date().getUTCMilliseconds(),
+                //task_id: new Date().getUTCMilliseconds(),
                 description: description.value,
                 category: category.value 
             }
 
             console.log(newTask)
-            this.context.addTask(newTask);
-            this.context.addDoTask(newTask.task_id);
-    
-            this.props.history.push(`/dashboard/${userId}`); 
-            
-          } 
+      
+
+    TasksApiService.postTask(newTask)
+      .then(this.context.addTask)
+      .then(this.props.history.push(`/dashboard/${userId}`))
+      .catch(this.context.setError);
+}
+          
     
         render() {
     

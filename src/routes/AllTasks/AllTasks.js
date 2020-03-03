@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AppContext from '../../AppContext';
+import UsersApiService from '../../services/users-api-service';
 import './AllTasks.css';
 
 class AllTasks extends Component {
@@ -44,8 +45,17 @@ class AllTasks extends Component {
     handleAddTask(e) {
         console.log(e);
         const id = parseInt(e.id);
-        this.context.addDoTask(id);
-        this.deleteTask(id);
+
+        const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+        const username = currentUser.username;
+        const doTasks = currentUser.do_tasks;
+        const newDoTasks = [ ...doTasks, id ];
+        console.log(newDoTasks);
+        const updatedUser = { ...currentUser, do_tasks: newDoTasks };
+        UsersApiService.updateUser(username, updatedUser)
+          .then(this.context.setCurrentUser)
+          .then(this.deleteTask(id))
+          .catch(this.context.setError);
     };
     
 
