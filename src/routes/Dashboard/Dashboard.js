@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import AppContext from '../../AppContext';
 import UsersApiService from '../../services/users-api-service';
 import PostsApiService from '../../services/posts-api-service';
+import TasksApiService from '../../services/tasks-api-service';
 import TaskList from '../TaskList/TaskList';
 import PostList from '../PostList/PostList';
 import PostItem from '../../components/PostItem/PostItem';
@@ -13,6 +14,20 @@ import './Dashboard.css';
 class Dashboard extends Component {
 
   static contextType = AppContext;
+
+  // componentDidMount() {
+  //   console.log('dashboard mount');
+  //   const currentUser=JSON.parse(sessionStorage.getItem('userObj'));
+  //   TasksApiService.getTasks()
+  //     .then(this.setTaskList)
+  //    .catch(this.setError);
+  //   UsersApiService.getUser(currentUser.username)
+  //     .then(this.context.setCurrentUser(currentUser.username))
+  //     .catch(this.setError);
+  //   PostsApiService.getPosts()
+  //     .then(this.setPostList)
+  //     .catch(this.setError);
+  // }
 
 
   doneHandler = (e) => {
@@ -36,24 +51,28 @@ class Dashboard extends Component {
       doneTasks: newDoneTasks
     }
     UsersApiService.updateUser(username, updatedUser)
-        .then(this.context.setCurrentUser);
-    this.context.addDoneTask(taskId);
-    this.context.deleteCurrentTask();
+        .then(this.context.updateCurrentUser(updatedUser))
+        .catch(this.setError);
   }
 
   render() {
-
-    const posts = this.context.postList;
-    const tasks = this.context.taskList;
+    console.log('render dashboard');
+    // const posts = this.context.postList;
+    // const tasks = this.context.taskList;
+    const posts = JSON.parse(sessionStorage.getItem('postsObj'));
+    console.log(posts);
+    const tasks = JSON.parse(sessionStorage.getItem('tasksObj'));
+    console.log(tasks);
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
     console.log(currentUser);
     const userId = this.props.match.params.userId;
     const userPosts = posts.filter(post => userId == post.user_id);
-    const currentTaskId = this.context.currentTask;
+    const currentTaskId = currentUser.current_task;
+    console.log(currentTaskId);
     const currentTask = tasks.filter(task => task.task_id == currentTaskId);
-    const userTasksDo = this.context.doTasks;
+    const userTasksDo = currentUser.do_tasks;
     const doTasks = tasks.filter(({task_id}) => userTasksDo.includes(task_id));
-    const userTasksDone = this.context.doneTasks;
+    const userTasksDone = currentUser.done_tasks;
     const doneTasks = tasks.filter(({task_id}) => userTasksDone.includes(task_id));
     const username = sessionStorage.getItem('username');
 

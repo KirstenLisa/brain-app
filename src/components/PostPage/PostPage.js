@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { format } from 'date-fns';
+import PostsApiService from '../../services/posts-api-service';
 import AppContext from '../../AppContext';
 import './PostPage.css';
 
@@ -11,8 +12,10 @@ class PostPage extends Component {
         e.preventDefault();
         console.log('delete post');
         const { userId, postId } = this.props.match.params;
-        this.context.deletePost(postId);
-        this.props.history.push(`/dashboard/${userId}`);
+        PostsApiService.deletePost(userId, postId)
+            .then(this.context.deletePost(postId))
+            .then(this.props.history.push(`/dashboard/${userId}`))
+            .catch(this.context.setError);  
     }
 
     editPost = e => {

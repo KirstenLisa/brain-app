@@ -27,6 +27,14 @@ const TokenService = {
 
   saveUserObj(obj) {
     window.sessionStorage.setItem('userObj', JSON.stringify(obj));
+  },
+
+  saveTasksObj(obj) {
+    window.sessionStorage.setItem('tasksObj', JSON.stringify(obj));
+  },
+
+  savePostsObj(obj) {
+    window.sessionStorage.setItem('postsObj', JSON.stringify(obj));
   }
 };
 

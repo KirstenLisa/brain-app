@@ -16,11 +16,12 @@ class AllTasks extends Component {
     componentDidMount() {
         const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
         console.log(currentUser);
-        const doList = currentUser[0].do_tasks;
+        const doList = currentUser.do_tasks;
         console.log(doList);
-        const currentTask = currentUser[0].current_task;
+        const currentTask = currentUser.current_task;
         console.log(currentTask);
-        const tasksEx = doList.concat(currentTask);
+        const doDone = doList.concat(currentUser.done_tasks);
+        const tasksEx = [ ...doList, currentTask ];
         console.log(tasksEx);
         const temporaryList = this.context.taskList.filter(task => {
             return tasksEx.indexOf(task.task_id) == -1;
@@ -30,7 +31,6 @@ class AllTasks extends Component {
     };
 
     setTemporaryList(temporaryList) {
-        console.log(temporaryList);
         this.setState({ temporaryList });
     };
 
@@ -43,9 +43,8 @@ class AllTasks extends Component {
     };
 
     handleAddTask(e) {
-        console.log(e);
         const id = parseInt(e.id);
-
+        console.log(id);
         const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
         const username = currentUser.username;
         const doTasks = currentUser.do_tasks;
@@ -53,7 +52,8 @@ class AllTasks extends Component {
         console.log(newDoTasks);
         const updatedUser = { ...currentUser, do_tasks: newDoTasks };
         UsersApiService.updateUser(username, updatedUser)
-          .then(this.context.setCurrentUser)
+          .then(this.context.updateCurrentUser(updatedUser))
+          .then(console.log(this.context.currentUser))
           .then(this.deleteTask(id))
           .catch(this.context.setError);
     };

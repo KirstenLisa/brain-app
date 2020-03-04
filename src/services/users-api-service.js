@@ -35,6 +35,7 @@ const UsersApiService = {
   },
 
   updateUser(username, updatedUser) {
+    console.log('update user');
     return fetch(`${config.API_ENDPOINT}/users/${username}`, {
       method: 'PATCH',
       headers: {

@@ -34,6 +34,17 @@ getPost(userId, postId) {
     );
   },
 
+  deletePost(userId, postId) {
+    return fetch(`${config.API_ENDPOINT}/posts/${userId}/${postId}`, {
+      method: 'DELETE',
+      // headers: {
+      //   authorization: `bearer ${TokenService.getAuthToken()}`
+      // }
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    );
+  },
+
   updatePost(userId, postId, updatedPost) {
     return fetch(`${config.API_ENDPOINT}/posts/${userId}/${postId}`, {
       method: 'PATCH',

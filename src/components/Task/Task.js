@@ -16,7 +16,7 @@ class Task extends Component {
       console.log(newDoTasks);
       const updatedUser = { ...currentUser, do_tasks: newDoTasks };
       UsersApiService.updateUser(username, updatedUser)
-        .then(this.context.setCurrentUser)
+        .then(this.context.updateCurrentUser(updatedUser))
         .catch(this.context.setError);
     };
 
@@ -33,7 +33,7 @@ class Task extends Component {
       console.log(currentUser);
       const updatedUser = {...currentUser, do_tasks: newDoTasks, current_task: newCurrentTask};
       UsersApiService.updateUser(username, updatedUser)
-        .then(this.context.setCurrentUser)
+        .then(this.context.updateCurrentUser(updatedUser))
         .catch(this.context.setError);  
   }
      

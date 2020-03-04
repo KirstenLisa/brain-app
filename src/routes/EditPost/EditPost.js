@@ -1,4 +1,5 @@
 import React from 'react';
+import PostsApiService from '../../services/posts-api-service';
 import ValidationError from '../../components/ValidationError';
 import AppContext from '../../AppContext';
 import './EditPost.css';
@@ -72,8 +73,10 @@ class EditHomework extends React.Component {
 
     console.log(updatedPost);
 
-    this.context.updatePost(updatedPost);
-    this.props.history.push(`/dashboard/${userId}`);
+    PostsApiService.updatePost(userId, postId, updatedPost)
+      .then(this.context.updatePost(updatedPost))
+      .then(this.props.history.push(`/dashboard/${userId}`))
+      .catch(this.context.setError);
   }
 
   render() {

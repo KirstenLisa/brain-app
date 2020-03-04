@@ -62,10 +62,13 @@ export class ContextProvider extends Component {
 
   setPostList = postList => {
     this.setState({ postList });
+    TokenService.savePostsObj(postList);
+
   };
 
   setTaskList = taskList => {
     this.setState({ taskList });
+    TokenService.saveTasksObj(taskList);
   };
 
   setError = error => {
@@ -96,8 +99,8 @@ export class ContextProvider extends Component {
     console.log(newDoTasks);
     const updatedUser = { ...currentUser, do_tasks: newDoTasks };
     UsersApiService.updateUser(username, updatedUser)
-      .then(this.context.setCurrentUser)
-      .catch(this.context.setError); 
+      .then(this.state.updateCurrentUser)
+      .catch(this.state.setError); 
   };
 
   deletePost = postId => {
@@ -187,13 +190,14 @@ export class ContextProvider extends Component {
     console.log(this.state.doneTasks);
   };
 
-  // updateCurrentUser = () => {
-  //   const updatedUser = {...this.state.currentUser, : value};
-  //   this.setState({ currentUser: updatedCurrentUser});
-  //   TokenService.saveUserObj(updatedCurrentUser);
-  //   UsersApiService.updateUser(username, updatedCurrentUser);
-  //   console.log(updatedCurrentUser);
-  // };
+  updateCurrentUser = (updatedUser) => {
+    this.setState({ currentUser: updatedUser});
+    console.log(this.state.currentUser);
+    this.setCurrentTask(updatedUser.current_task);
+    this.setDoTasks(updatedUser.do_tasks);
+    this.setDoneTasks(updatedUser.done_tasks);
+    TokenService.saveUserObj(updatedUser);
+   };
 
   render() {
     const contextValue = {
