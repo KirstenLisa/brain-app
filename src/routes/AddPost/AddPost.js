@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
+import PostsApiService from '../../services/posts-api-service';
 import AppContext from '../../AppContext';
 import ValidationError from '../../components/ValidationError';
 import placeholder_pic from '../../images/alpaka_dancing.jpg';
 import uuid from 'uuid/v4';
 import './AddPost.css';
+import { thisExpression } from '@babel/types';
 
 
 class AddPost extends Component {
@@ -110,11 +112,15 @@ class AddPost extends Component {
         post_id: uuid(),
         user_id: userId,
         content: content.value,
-        date: new Date(),
+        post_pic: 'URL',
+        date: "2020-03-04T06:54:03.320Z",
       };
-      this.context.addPost(newPost);
-      this.formRef.reset();
-    
+      console.log(newPost);
+
+      PostsApiService.addPost(newPost)
+        .then(this.context.addPost(newPost))
+        .then(this.formRef.reset())
+        .catch(this.context.setError);
     }
 
     render() {

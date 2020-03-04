@@ -23,7 +23,7 @@ export default class Header extends Component {
   handleLogoutClick = () => {
     TokenService.clearAuthToken()
     this.context.setLogin()
-    TokenService.clearUser()
+    TokenService.clearUsername()
     }
   
     renderLogoutLink() {
@@ -92,14 +92,10 @@ export default class Header extends Component {
         {username
           ? this.renderDashboardLink()
           : this.renderHomeLink()}
-
-        {this.state.loggedIn
-        ? this.renderLogoutLink()
-        : this.renderLoginLink()}
         
-      {/* {TokenService.hasAuthToken()
+      {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
-          : this.renderLoginLink()} */}
+          : this.renderLoginLink()}
       </nav>
 
     )

@@ -57,6 +57,19 @@ getPost(userId, postId) {
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
+  addPost(newPost) {
+    console.log(newPost);
+    return fetch(`${config.API_ENDPOINT}/posts`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        //authorization: `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify(newPost)
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    );
+  },
 };
 
 export default PostsApiService;
