@@ -15,7 +15,7 @@ const LandingPage = () => {
           <li className='testUsers'>
             <p>Username 1: fluffy_rabbit</p>
             <p>Username 2: Dulli</p>
-            <p>Password: Any 8 characters, no backend authentication yet</p>
+            <p>Password: Password!123</p>
           </li>
         </ul>
         <p>

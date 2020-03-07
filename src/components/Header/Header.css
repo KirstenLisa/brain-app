@@ -29,3 +29,13 @@ nav {
       font-size: 40px;
       color: white;
     }
+
+.logout-button {
+  background-color: #F24182;
+  border: 2px solid  #F2C53D;
+  width: 100px;
+}
+
+.logout-button:hover {
+  background-color: #F2C53D;
+}

@@ -4,10 +4,11 @@
     margin-bottom: 20px;
 }
 
-.post-list-item {
+.post-list-item a {
     color: #223454 !important;
 }
 
 .post-list-headline {
     font-size: 24px;
 }
+

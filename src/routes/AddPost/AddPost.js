@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
+import config from '../../config';
 import PostsApiService from '../../services/posts-api-service';
 import AppContext from '../../AppContext';
 import ValidationError from '../../components/ValidationError';
 import placeholder_pic from '../../images/alpaka_dancing.jpg';
 import uuid from 'uuid/v4';
 import './AddPost.css';
-import { thisExpression } from '@babel/types';
 
 
 class AddPost extends Component {
@@ -17,19 +17,27 @@ class AddPost extends Component {
       super(props);
       this.state = {
         content: { value: '', touched: false },
+        post_pic: { value: ''},
         error: null
       };
     }
 
+    componentDidMount() {
+      this.setState({post_pic: { value: '/images/dulli_mud.jpeg' }});
+    }
 
-    uploadFile(file, signedRequest, url){
+
+    uploadFile = (file, signedRequest, url) => {
+      console.log(url);
       const xhr = new XMLHttpRequest();
+      console.log(signedRequest);
       xhr.open('PUT', signedRequest);
       xhr.onreadystatechange = () => {
         if(xhr.readyState === 4){
           if(xhr.status === 200){
             document.getElementById('preview').value = url;
-            document.getElementById('image-url').value = url;
+            document.getElementById('image-url').src = url;
+            this.setState({post_pic: { value: url }});
           }
           else{
             alert('Could not upload file.');
@@ -44,14 +52,19 @@ class AddPost extends Component {
       If request successful, continue to upload the file using this signed
       request.
     */
-    getSignedRequest(file){
+    getSignedRequest = (file) => {
+      console.log(file.name);
+      console.log(file);
       const xhr = new XMLHttpRequest();
-      xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+      xhr.open('GET', `${config.API_ENDPOINT}/sign-s3?file-name=${file.name}&file-type=${file.type}`);
       xhr.onreadystatechange = () => {
         if(xhr.readyState === 4){
           if(xhr.status === 200){
             const response = JSON.parse(xhr.responseText);
             this.uploadFile(file, response.signedRequest, response.url);
+            console.log(response.url);
+            this.setState({post_pic: { value: 'response.url' }});
+            console.log(response.signedRequest);
           }
           else{
             alert('Could not get signed URL.');
@@ -65,9 +78,10 @@ class AddPost extends Component {
      Function called when file input updated. If there is a file selected, then
      start upload procedure by asking for a signed request from the app.
     */
-    initUpload(){
+    initUpload = () => {
       const files = document.getElementById('file-input').files;
       const file = files[0];
+      console.log(file);
       if(file == null){
         return alert('No file selected.');
       }
@@ -112,8 +126,8 @@ class AddPost extends Component {
         post_id: uuid(),
         user_id: userId,
         content: content.value,
-        post_pic: 'URL',
-        date: "2020-03-04T06:54:03.320Z",
+        post_pic: this.state.post_pic.value,
+        date: new Date(),
       };
       console.log(newPost);
 
@@ -131,12 +145,14 @@ class AddPost extends Component {
         
         <input 
         type="file" 
-        id="file-input"/>
+        id="file-input"
+        onChange={this.initUpload}/>
         <p id="status">Please select a file</p>
+        <p>{this.state.post_pic.value}</p>
         <img 
           id="preview" 
-          src={placeholder_pic}
-          value='/images/alpaka_dancing.jpg'></img>
+          src={this.state.post_pic.value}
+          value={this.state.post_pic.value}></img>
 
           <form onSubmit={this.postSubmitHandler} className='add-post-form' ref={el => this.formRef = el}>
             <div className='add-content'>
@@ -162,7 +178,6 @@ class AddPost extends Component {
               id='image-url' 
               name='image-url' 
               value='/images/alpaka_dancing.jpg'
-              onChange={this.initUpload}
               />
            
             
