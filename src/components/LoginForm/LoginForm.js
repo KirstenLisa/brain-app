@@ -98,6 +98,7 @@ class LoginForm extends React.Component {
             TokenService.saveUsername(userName);
             this.props.history.push(`/dashboard/${userId}`);
             this.context.setLogin();
+           
           })
           .catch(res => {
             this.setState({

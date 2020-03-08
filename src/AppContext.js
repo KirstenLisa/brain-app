@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import TokenService from './services/token-service';
 import UsersApiService from './services/users-api-service';
 import TasksApiService from './services/tasks-api-service';
-import PostsApiService from './services/posts-api-service';
 
 const AppContext = React.createContext({
     usersList: [],
@@ -51,9 +50,9 @@ export class ContextProvider extends Component {
     TasksApiService.getTasks()
       .then(this.setTaskList)
      .catch(this.setError);
-    PostsApiService.getPosts()
-      .then(this.setPostList)
-      .catch(this.setError);
+    // PostsApiService.getPosts()
+    //   .then(this.setPostList)
+    //   .catch(this.setError);
   }
 
   setUsersList = usersList => {

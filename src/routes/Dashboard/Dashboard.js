@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../../AppContext';
 import UsersApiService from '../../services/users-api-service';
+import PostsApiService from '../../services/posts-api-service';
 import TaskList from '../TaskList/TaskList';
 import PostList from '../PostList/PostList';
 import PostItem from '../../components/PostItem/PostItem';
@@ -12,6 +13,17 @@ import './Dashboard.css';
 class Dashboard extends Component {
 
   static contextType = AppContext;
+
+  state = {
+    postList: []
+  }
+
+  componentDidMount() {
+    PostsApiService.getPosts()
+      .then(this.context.setPostList)
+      .catch(this.setError);
+    this.setState({ postList: JSON.parse(sessionStorage.getItem('postsObj'))})
+ }
 
   doneHandler = (e) => {
     const taskId = parseInt(e.id);
@@ -36,15 +48,42 @@ class Dashboard extends Component {
         .catch(this.setError);
   }
 
+  renderPostSection = () => {
+    const userId = this.props.match.params.userId;
+    const posts = JSON.parse(sessionStorage.getItem('postsObj'));
+    console.log(posts);
+    const userPosts = posts.filter(post => userId == post.user_id);
+    return(
+    <section className='post-section'>
+          <h2 className='post-headline'>POSTS</h2>
+      
+          <div className='post-item'>
+              <PostItem 
+              currentPost={userPosts[0]}
+              userId={userId}
+              />
+              </div>
+
+          <div className='post-list'>
+              <PostList 
+              postList={userPosts.slice(1)}
+              />
+            </div>
+
+          <div className='add-post'>
+            <AddPost />
+              </div> 
+
+        </section>)
+  }
+
   render() {
     console.log('render dashboard');
     // const posts = this.context.postList;
     // const tasks = this.context.taskList;
-    const posts = JSON.parse(sessionStorage.getItem('postsObj'));
     const tasks = JSON.parse(sessionStorage.getItem('tasksObj'));
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
     const userId = this.props.match.params.userId;
-    const userPosts = posts.filter(post => userId == post.user_id);
     const currentTaskId = currentUser.current_task;
     const currentTask = tasks.filter(task => task.task_id == currentTaskId);
     const userTasksDo = currentUser.do_tasks;
@@ -84,27 +123,7 @@ class Dashboard extends Component {
           </div>
         </section>
 
-        <section className='post-section'>
-          <h2 className='post-headline'>POSTS</h2>
- 
-          <div className='post-item'>
-              <PostItem 
-              currentPost={userPosts[0]}
-              userId={userId}
-              />
-              </div>
-
-          <div className='post-list'>
-              <PostList 
-              postList={userPosts.slice(1)}
-              />
-            </div>
-
-          <div className='add-post'>
-            <AddPost />
-              </div> 
-
-        </section>
+        {this.state.postList && this.renderPostSection}
 
         <section className='do-task-section'>
           <h2 className='dashboard-headline'>TO DO</h2>
