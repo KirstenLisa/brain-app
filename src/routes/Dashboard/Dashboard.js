@@ -22,9 +22,15 @@ class Dashboard extends Component {
     console.log('mount');
     PostsApiService.getPosts()
       .then(this.context.setPostList)
-      .then(this.setState({ postList: JSON.parse(sessionStorage.getItem('postsObj'))}))
+      .then(this.getPosts)
       .catch(this.setError);
+      console.log(JSON.parse(sessionStorage.getItem('postsObj')))
  }
+
+ getPosts = () => {
+  this.setState({ postList:JSON.parse(sessionStorage.getItem('postsObj'))})
+ }
+
 
   doneHandler = (e) => {
     const taskId = parseInt(e.id);

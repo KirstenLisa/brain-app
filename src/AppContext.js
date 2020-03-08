@@ -60,8 +60,10 @@ export class ContextProvider extends Component {
   };
 
   setPostList = postList => {
-    this.setState({ postList });
+    console.log(postList);
+    this.setState({ postList: [0,1,2,3] });
     TokenService.savePostsObj(postList);
+    console.log(this.state.postList);
   };
 
   setTaskList = taskList => {
