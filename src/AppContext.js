@@ -62,7 +62,6 @@ export class ContextProvider extends Component {
   setPostList = postList => {
     this.setState({ postList });
     TokenService.savePostsObj(postList);
-
   };
 
   setTaskList = taskList => {

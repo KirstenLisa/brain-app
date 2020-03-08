@@ -19,10 +19,11 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
+    console.log('mount');
     PostsApiService.getPosts()
       .then(this.context.setPostList)
+      .then(this.setState({ postList: JSON.parse(sessionStorage.getItem('postsObj'))}))
       .catch(this.setError);
-    this.setState({ postList: JSON.parse(sessionStorage.getItem('postsObj'))})
  }
 
   doneHandler = (e) => {
@@ -48,15 +49,14 @@ class Dashboard extends Component {
         .catch(this.setError);
   }
 
-  renderPostSection = () => {
+  renderPostSection() {
     const userId = this.props.match.params.userId;
-    const posts = JSON.parse(sessionStorage.getItem('postsObj'));
+    const posts = this.state.postList;
     console.log(posts);
     const userPosts = posts.filter(post => userId == post.user_id);
     return(
-    <section className='post-section'>
-          <h2 className='post-headline'>POSTS</h2>
-      
+    
+      <div>
           <div className='post-item'>
               <PostItem 
               currentPost={userPosts[0]}
@@ -69,18 +69,24 @@ class Dashboard extends Component {
               postList={userPosts.slice(1)}
               />
             </div>
+          </div>
+       );
+  }
 
-          <div className='add-post'>
-            <AddPost />
-              </div> 
-
-        </section>)
+  renderNoPosts = () => {
+    return( 
+      <section>
+        <p>No posts yet</p>
+      </section>
+    );
   }
 
   render() {
     console.log('render dashboard');
     // const posts = this.context.postList;
     // const tasks = this.context.taskList;
+    const posts = this.state.postList;
+    console.log(posts.length);
     const tasks = JSON.parse(sessionStorage.getItem('tasksObj'));
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
     const userId = this.props.match.params.userId;
@@ -123,7 +129,15 @@ class Dashboard extends Component {
           </div>
         </section>
 
-        {this.state.postList && this.renderPostSection}
+        <section className='post-section'>
+          <h2 className='post-headline'>POSTS</h2>
+          {posts.length > 0 
+          ? this.renderPostSection()
+          : this.renderNoPosts()}
+        <div className='add-post'>
+            <AddPost />
+              </div> 
+         </section>
 
         <section className='do-task-section'>
           <h2 className='dashboard-headline'>TO DO</h2>
