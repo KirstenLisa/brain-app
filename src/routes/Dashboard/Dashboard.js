@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../../AppContext';
 import UsersApiService from '../../services/users-api-service';
-import PostsApiService from '../../services/posts-api-service';
-import TasksApiService from '../../services/tasks-api-service';
 import TaskList from '../TaskList/TaskList';
 import PostList from '../PostList/PostList';
 import PostItem from '../../components/PostItem/PostItem';
@@ -15,21 +13,6 @@ class Dashboard extends Component {
 
   static contextType = AppContext;
 
-  // componentDidMount() {
-  //   console.log('dashboard mount');
-  //   const currentUser=JSON.parse(sessionStorage.getItem('userObj'));
-  //   TasksApiService.getTasks()
-  //     .then(this.setTaskList)
-  //    .catch(this.setError);
-  //   UsersApiService.getUser(currentUser.username)
-  //     .then(this.context.setCurrentUser(currentUser.username))
-  //     .catch(this.setError);
-  //   PostsApiService.getPosts()
-  //     .then(this.setPostList)
-  //     .catch(this.setError);
-  // }
-
-
   doneHandler = (e) => {
     const taskId = parseInt(e.id);
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
@@ -37,9 +20,7 @@ class Dashboard extends Component {
     const doTasks = currentUser.do_tasks;
     const randomNum = doTasks[Math.floor(Math.random() * doTasks.length)];
     const newCurrentTask = randomNum;
-    console.log(newCurrentTask);
     const newDoneTasks = [ ...currentUser.done_tasks, taskId ];
-    console.log(newDoneTasks);
     const updatedUser = {
       id: currentUser.id,
       username: currentUser.username,
@@ -60,15 +41,11 @@ class Dashboard extends Component {
     // const posts = this.context.postList;
     // const tasks = this.context.taskList;
     const posts = JSON.parse(sessionStorage.getItem('postsObj'));
-    console.log(posts);
     const tasks = JSON.parse(sessionStorage.getItem('tasksObj'));
-    console.log(tasks);
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
-    console.log(currentUser);
     const userId = this.props.match.params.userId;
     const userPosts = posts.filter(post => userId == post.user_id);
     const currentTaskId = currentUser.current_task;
-    console.log(currentTaskId);
     const currentTask = tasks.filter(task => task.task_id == currentTaskId);
     const userTasksDo = currentUser.do_tasks;
     const doTasks = tasks.filter(({task_id}) => userTasksDo.includes(task_id));
@@ -79,7 +56,7 @@ class Dashboard extends Component {
     return (
       <div className='dashboard'>
         <div className='dashboard-header'>
-          <img className='profile-pic' src={currentUser.profile_pic}></img>
+          <img className='profile-pic' alt='profile-pic' src={currentUser.profile_pic}></img>
           <h3 className='welcome-headline'>
             Welcome, {username}! What is today's adventure?
           </h3>

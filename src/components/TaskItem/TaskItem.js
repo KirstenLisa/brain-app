@@ -3,8 +3,6 @@ import './TaskItem.css';
 
 const TaskItem = (props) => { 
 
-  console.log(props.currentTask);
-
     return(
         <div className='task-item'>
           {props.currentTask == undefined && (<p>EWRTGZHJK</p>)}

@@ -74,7 +74,6 @@ class LoginForm extends React.Component {
         const userName = username.value;
         const user = this.context.usersList.filter(user => user.username == userName);
         const userId = user[0].id;
-        console.log(userId);
     
         if (this.validateForm()) {
           return null;
@@ -94,7 +93,6 @@ class LoginForm extends React.Component {
             username.value = '';
             password.value = '';
             TokenService.saveAuthToken(res.authToken);
-            console.log(res.authToken);
             UsersApiService.getUser(userName)
             .then(this.context.setCurrentUser(userName));
             TokenService.saveUsername(userName);

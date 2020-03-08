@@ -10,7 +10,6 @@ class PostPage extends Component {
 
     handlePostDelete = e => {
         e.preventDefault();
-        console.log('delete post');
         const { userId, postId } = this.props.match.params;
         PostsApiService.deletePost(userId, postId)
             .then(this.context.deletePost(postId))
@@ -29,7 +28,6 @@ class PostPage extends Component {
         const { postId, userId } = this.props.match.params;
         const posts = this.context.postList;
         const currentPost = posts.filter(post => post.post_id == postId);
-        console.log(currentPost);
 
         return(
             <div className='post-page'>

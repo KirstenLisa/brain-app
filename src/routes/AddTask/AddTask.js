@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import AppContext from '../../AppContext';
 import ValidationError from '../../components/ValidationError';
 import PropTypes from 'prop-types';
-import UsersApiService from '../../services/users-api-service';
 import TasksApiService from '../../services/tasks-api-service';
-import config from '../../config';
 import './AddTask.css';
 
 
@@ -117,7 +115,6 @@ class AddTask extends Component {
             const categories = categoriesUnique.map(
             (category, i) => <option value={category.category} key={i} id={i}>{category.category}</option>
           );
-            console.log(categories);
     
             const descriptionError = this.validateDescription();
             const categoryError = this.validateSelection();

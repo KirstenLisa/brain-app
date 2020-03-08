@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GoogleFontLoader from 'react-google-font-loader';
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 //import PrivateRoute from './utils/PrivateRoute';
 //import PublicOnlyRoute from './utils/PublicOnlyRoute';
 import Header from './components/Header/Header';
@@ -13,7 +13,6 @@ import PostPage from './components/PostPage/PostPage';
 import AddPost from './routes/AddPost/AddPost';
 import AddTask from './routes/AddTask/AddTask';
 import EditPost from './routes/EditPost/EditPost';
-import AppContext from './AppContext';
 import './App.css'
 
 

@@ -3,7 +3,6 @@ import { withRouter } from 'react-router';
 import config from '../../config';
 import UsersApiService from '../../services/users-api-service';
 import AppContext from '../../AppContext';
-import TokenService from '../../services/token-service';
 import ValidationError from '../ValidationError';
 import './RegistrationForm.css';
 
@@ -199,13 +198,14 @@ class RegistrationForm extends React.Component {
         <section className='add-user-section'>
         
         <input 
-        type="file" 
-        id="file-input"
+        type='file' 
+        id='file-input'
         onChange={this.initUpload}/>
-        <p id="status">Please select a profile picture</p>
+        <p id='status'>Please select a profile picture</p>
         <p>{this.state.profile_pic.value}</p>
         <img 
-          id="preview" 
+          id='preview'
+          alt='preview' 
           src={this.state.profile_pic.value}
           value={this.state.profile_pic.value}></img>
         <form className='registration-form' onSubmit={this.handleSubmit}>

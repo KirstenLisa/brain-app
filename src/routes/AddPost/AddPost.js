@@ -4,7 +4,6 @@ import config from '../../config';
 import PostsApiService from '../../services/posts-api-service';
 import AppContext from '../../AppContext';
 import ValidationError from '../../components/ValidationError';
-import placeholder_pic from '../../images/alpaka_dancing.jpg';
 import uuid from 'uuid/v4';
 import './AddPost.css';
 
@@ -28,9 +27,7 @@ class AddPost extends Component {
 
 
     uploadFile = (file, signedRequest, url) => {
-      console.log(url);
       const xhr = new XMLHttpRequest();
-      console.log(signedRequest);
       xhr.open('PUT', signedRequest);
       xhr.onreadystatechange = () => {
         if(xhr.readyState === 4){
@@ -64,7 +61,6 @@ class AddPost extends Component {
             this.uploadFile(file, response.signedRequest, response.url);
             console.log(response.url);
             this.setState({post_pic: { value: 'response.url' }});
-            console.log(response.signedRequest);
           }
           else{
             alert('Could not get signed URL.');
@@ -118,7 +114,6 @@ class AddPost extends Component {
 
       const { content } = e.target;
       const userId = this.props.match.params.userId;
-      console.log(userId);
 
       const newPost = {
         post_id: uuid(),
@@ -142,13 +137,14 @@ class AddPost extends Component {
       <section className='add-post-section'>
         
         <input 
-        type="file" 
-        id="file-input"
+        type='file' 
+        id='file-input'
         onChange={this.initUpload}/>
         <p id="status">Please select a file</p>
         <p>{this.state.post_pic.value}</p>
         <img 
-          id="preview" 
+          id='preview'
+          alt='preview' 
           src={this.state.post_pic.value}
           value={this.state.post_pic.value}></img>
 

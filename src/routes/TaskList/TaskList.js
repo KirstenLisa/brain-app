@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
 import Task from '../../components/Task/Task';
 import uuid from 'uuid/v4';
 import './TaskList.css';
@@ -34,7 +33,6 @@ class TaskList extends Component {
 
 handleCategory = (e, array) => {
   e.preventDefault();
-  console.log(e.target.value);
   const category = e.target.value;
   const filteredTasks = array.filter(item => item.category == category);
   this.setState({userTasks: filteredTasks});
@@ -42,8 +40,6 @@ handleCategory = (e, array) => {
 
     render() {
       const tasks = this.props.tasks;
-      console.log(tasks)
-      console.log(this.state.userTasks)
       const tasklist = this.state.userTasks.map((task, i) => (<li key={i} id={task.task_id}>
         <Task 
           description={task.description}

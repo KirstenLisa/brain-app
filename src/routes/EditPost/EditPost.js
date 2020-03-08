@@ -39,10 +39,6 @@ class EditHomework extends React.Component {
     this.setState({ content: { value: content, touched: true } });
   }
 
-  updatePic() {
-    console.log('upload new pic');
-  }
-
   validateForm() {
     if (this.validateContent()) {
       this.setState({ content: { touched: true } });
@@ -52,9 +48,8 @@ class EditHomework extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const { postId, userId } = this.props.match.params;
-    console.log(this.props.match.params);
 
-    const { content, post_pic } = e.target;
+    const { content } = e.target;
 
     const updatedPost = {
       post_id: postId,
@@ -81,8 +76,6 @@ class EditHomework extends React.Component {
 
   render() {
 
-    console.log(this.state.content)
-
     return (
       <form className='edit-post-form' onSubmit={e => this.handleSubmit(e)}>
         <div className='edit-post-error' role='alert'>
@@ -92,19 +85,6 @@ class EditHomework extends React.Component {
 
         <div className='post-pic-display'>
           <img className='post-pic-display' alt='post-pic' src={ this.state.post_pic }></img>
-        </div>
-
-        <div className='edit-pic'>
-          <label htmlFor=''>Pic</label>
-          <textarea
-            type='text'
-            className='edit_pic_input'
-            name='post-pic'
-            id='post-pic'
-            value={this.state.post_pic}
-            onChange={e => this.updatePic(e.target.value)}
-            aria-required='true'
-          />
         </div>
 
         <div className='edit-content'>
