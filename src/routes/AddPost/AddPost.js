@@ -109,8 +109,6 @@ class AddPost extends Component {
       }
     }
 
-
-
     postSubmitHandler = e => {
       e.preventDefault();
       if (this.validateForm()) {

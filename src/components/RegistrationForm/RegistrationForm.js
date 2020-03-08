@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import config from '../../config';
+import UsersApiService from '../../services/users-api-service';
 import AppContext from '../../AppContext';
 import TokenService from '../../services/token-service';
 import ValidationError from '../ValidationError';
@@ -16,13 +18,66 @@ class RegistrationForm extends React.Component {
         username: { value: '', touched: false },
         password: { value: '', touched: false },
         email: { value: '', touched: false },
+        profile_pic: { value: ''},
         error: null
       };
     }
   
     componentDidMount() {
       this.context.clearError();
+      this.setState({ profile_pic: {value: '/images/alpaka_funny.jpg'}})
       // ALL API GOES HERE
+    }
+
+    uploadFile = (file, signedRequest, url) => {
+      console.log(url);
+      const xhr = new XMLHttpRequest();
+      console.log(signedRequest);
+      xhr.open('PUT', signedRequest);
+      xhr.onreadystatechange = () => {
+        if(xhr.readyState === 4){
+          if(xhr.status === 200){
+            document.getElementById('preview').value = url;
+            this.setState({profile_pic: { value: url }});
+          }
+          else{
+            alert('Could not upload file.');
+          }
+        }
+      };
+      xhr.send(file);
+    }
+
+    getSignedRequest = (file) => {
+      console.log(file.name);
+      console.log(file);
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', `${config.API_ENDPOINT}/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+      xhr.onreadystatechange = () => {
+        if(xhr.readyState === 4){
+          if(xhr.status === 200){
+            const response = JSON.parse(xhr.responseText);
+            this.uploadFile(file, response.signedRequest, response.url);
+            console.log(response.url);
+            this.setState({post_pic: { value: 'response.url' }});
+            console.log(response.signedRequest);
+          }
+          else{
+            alert('Could not get signed URL.');
+          }
+        }
+      };
+      xhr.send();
+    }
+
+    initUpload = () => {
+      const files = document.getElementById('file-input').files;
+      const file = files[0];
+      console.log(file);
+      if(file == null){
+        return alert('No file selected.');
+      }
+      this.getSignedRequest(file);
     }
   
     updateFullname(fullname) {
@@ -104,9 +159,31 @@ class RegistrationForm extends React.Component {
       if (this.validateRegistrationForm()) {
         return null;
       }
-     
-        this.props.history.push('/login');
-        
+
+      UsersApiService.postUser({
+        fullname: fullname.value,
+        username: username.value,
+        password: password.value,
+        profile_pic: this.state.profile_pic.value,
+        email: email.value,
+        current_task: 1,
+        do_tasks: [],
+        done_tasks: []
+      })
+        .then(user => {
+          fullname.value = '';
+          username.value = '';
+          password.value = '';
+          email.value = '';
+          this.props.history.push('/login');
+        })
+        .catch(res => {
+          this.setState({
+            error: {
+              message: res.error
+            }
+          });
+        });    
     };
   
     render() {
@@ -119,6 +196,18 @@ class RegistrationForm extends React.Component {
       const emailError = this.validateEmail();
   
       return (
+        <section className='add-user-section'>
+        
+        <input 
+        type="file" 
+        id="file-input"
+        onChange={this.initUpload}/>
+        <p id="status">Please select a profile picture</p>
+        <p>{this.state.profile_pic.value}</p>
+        <img 
+          id="preview" 
+          src={this.state.profile_pic.value}
+          value={this.state.profile_pic.value}></img>
         <form className='registration-form' onSubmit={this.handleSubmit}>
           <div role='alert' className='registrationError'>
             {error && <p>{error.message}</p>}
@@ -207,6 +296,7 @@ class RegistrationForm extends React.Component {
             </button>
           </div>
         </form>
+        </section>
       );
     }
   }
