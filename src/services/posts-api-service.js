@@ -6,7 +6,7 @@ const PostsApiService = {
     return fetch(`${config.API_ENDPOINT}/posts`, {
       headers: {
         'content-type': 'application/json',
-        //authorization: `bearer ${TokenService.getAuthToken()}`
+        authorization: `bearer ${TokenService.getAuthToken()}`
       }
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
@@ -16,7 +16,7 @@ const PostsApiService = {
     return fetch(`${config.API_ENDPOINT}/posts/${userId}`, {
       headers: {
         'content-type': 'application/json',
-        //authorization: `bearer ${TokenService.getAuthToken()}`
+        authorization: `bearer ${TokenService.getAuthToken()}`
       }
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
@@ -27,7 +27,7 @@ getPost(userId, postId) {
     return fetch(`${config.API_ENDPOINT}/posts/${userId}/${postId}`, {
       headers: {
         'content-type': 'application/json',
-        //authorization: `bearer ${TokenService.getAuthToken()}`
+        authorization: `bearer ${TokenService.getAuthToken()}`
       }
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
@@ -37,9 +37,9 @@ getPost(userId, postId) {
   deletePost(userId, postId) {
     return fetch(`${config.API_ENDPOINT}/posts/${userId}/${postId}`, {
       method: 'DELETE',
-      // headers: {
-      //   authorization: `bearer ${TokenService.getAuthToken()}`
-      // }
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
@@ -50,7 +50,7 @@ getPost(userId, postId) {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
-        //authorization: `bearer ${TokenService.getAuthToken()}`
+        authorization: `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(updatedPost)
     }).then(res =>
@@ -63,7 +63,7 @@ getPost(userId, postId) {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        //authorization: `bearer ${TokenService.getAuthToken()}`
+        authorization: `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(newPost)
     }).then(res =>

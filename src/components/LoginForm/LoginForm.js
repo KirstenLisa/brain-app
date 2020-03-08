@@ -94,6 +94,7 @@ class LoginForm extends React.Component {
             username.value = '';
             password.value = '';
             TokenService.saveAuthToken(res.authToken);
+            console.log(res.authToken);
             UsersApiService.getUser(userName)
             .then(this.context.setCurrentUser(userName));
             TokenService.saveUsername(userName);
