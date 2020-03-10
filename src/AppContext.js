@@ -60,10 +60,8 @@ export class ContextProvider extends Component {
   };
 
   setPostList = postList => {
-    console.log(postList);
-    this.setState({ postList: [0,1,2,3] });
+    this.setState({ postList});
     TokenService.savePostsObj(postList);
-    console.log(this.state.postList);
   };
 
   setTaskList = taskList => {
@@ -98,8 +96,8 @@ export class ContextProvider extends Component {
     const newDoTasks = [ ...doTasks, newTask.task_id ];
     console.log(newDoTasks);
     const updatedUser = { ...currentUser, do_tasks: newDoTasks };
+    this.updateCurrentUser(updatedUser);
     UsersApiService.updateUser(username, updatedUser)
-      .then(this.state.updateCurrentUser)
       .catch(this.state.setError); 
   };
 
@@ -191,6 +189,7 @@ export class ContextProvider extends Component {
   };
 
   updateCurrentUser = (updatedUser) => {
+    console.log('update user');
     this.setState({ currentUser: updatedUser});
     console.log(this.state.currentUser);
     this.setCurrentTask(updatedUser.current_task);

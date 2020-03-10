@@ -47,22 +47,39 @@ class Dashboard extends Component {
       email: currentUser.email,
       profile_pic: currentUser.profile_pic,
       current_task: newCurrentTask,
-      doTasks: currentUser.done_tasks,
-      doneTasks: newDoneTasks
+      do_tasks: currentUser.done_tasks,
+      done_tasks: newDoneTasks
     }
     UsersApiService.updateUser(username, updatedUser)
         .then(this.context.updateCurrentUser(updatedUser))
         .catch(this.setError);
   }
 
+renderCurrentTask() {
+  const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+  const currentTaskId = currentUser.current_task;
+  const tasks = JSON.parse(sessionStorage.getItem('tasksObj'));
+  const currentTask = tasks.filter(task => task.task_id == currentTaskId);
+
+  return(
+    <div className='doing-section'>
+              <TaskItem 
+                currentTask={currentTask}
+                doneHandler={this.doneHandler}
+                />
+          </div>
+  )
+}
+
   renderPostSection() {
     const userId = this.props.match.params.userId;
     const posts = this.state.postList;
-    console.log(posts);
     const userPosts = posts.filter(post => userId == post.user_id);
-    return(
+    console.log(userPosts.length);
+    if(userPosts.length > 0) {
+      return(
     
-      <div>
+        <div>
           <div className='post-item'>
               <PostItem 
               currentPost={userPosts[0]}
@@ -74,15 +91,83 @@ class Dashboard extends Component {
               <PostList 
               postList={userPosts.slice(1)}
               />
-            </div>
+            </div> 
           </div>
-       );
+       ) } else {
+        return(
+          <div>
+            <p>Post something you did!</p>
+          </div>
+        )
+       }
   }
 
   renderNoPosts = () => {
     return( 
       <section>
         <p>No posts yet</p>
+      </section>
+    );
+  }
+
+  renderDoTasksSection() {
+    const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+    const tasks = JSON.parse(sessionStorage.getItem('tasksObj'));
+    const userTasksDo = currentUser.do_tasks;
+    const doTasks = tasks.filter(({task_id}) => userTasksDo.includes(task_id))
+    return(
+      <section className='do-task-section'>
+          <h2 className='dashboard-headline'>TO DO</h2>
+          <TaskList 
+          tasks={doTasks}
+          />
+        </section>
+    )
+  }
+
+  renderDoneTasksSection() {
+    const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+    const tasks = JSON.parse(sessionStorage.getItem('tasksObj'));
+    const userTasksDone = currentUser.done_tasks;
+    const doneTasks = tasks.filter(({task_id}) => userTasksDone.includes(task_id));
+
+    return(
+      <section className='done-task-section'>
+          <h2 className='dashboard-headline'>DONE</h2>
+          <TaskList 
+          tasks={doneTasks}
+          />
+        </section>
+    )
+  }
+
+  renderNoDoTasks = () => {
+    const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+    const userId = currentUser.id;
+    return( 
+      <section>
+        <p>What's your bucket list?</p>
+        <div className='add-task-buttons'>
+            <button className='add-task-button'>
+              <Link to={`/newtask/${userId}`}>
+              Add Task
+              </Link>
+            </button>
+            <button className='add-task-list-button'>
+              <Link to={`/tasklist/${userId}`}>
+              Task List
+              </Link>
+            </button>
+          </div>
+      </section>
+    );
+  }
+
+
+  renderNoDoneTasks = () => {
+    return( 
+      <section>
+        <p>No tasks done yet</p>
       </section>
     );
   }
@@ -94,14 +179,16 @@ class Dashboard extends Component {
     const posts = this.state.postList;
     console.log(posts.length);
     const tasks = JSON.parse(sessionStorage.getItem('tasksObj'));
+    console.log(tasks);
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
     const userId = this.props.match.params.userId;
     const currentTaskId = currentUser.current_task;
-    const currentTask = tasks.filter(task => task.task_id == currentTaskId);
+    //const currentTask = tasks.filter(task => task.task_id == currentTaskId);
     const userTasksDo = currentUser.do_tasks;
-    const doTasks = tasks.filter(({task_id}) => userTasksDo.includes(task_id));
+    console.log(currentUser.do_tasks);
+    //const doTasks = tasks.filter(({task_id}) => userTasksDo.includes(task_id))
     const userTasksDone = currentUser.done_tasks;
-    const doneTasks = tasks.filter(({task_id}) => userTasksDone.includes(task_id));
+    //const doneTasks = tasks.filter(({task_id}) => userTasksDone.includes(task_id))
     const username = sessionStorage.getItem('username');
 
     return (
@@ -114,13 +201,9 @@ class Dashboard extends Component {
         </div>
 
         <section className='current-task-section'>
-
-        <div className='doing-section'>
-              <TaskItem 
-                currentTask={currentTask}
-                doneHandler={this.doneHandler}
-                />
-          </div>
+        {tasks != null && this.renderCurrentTask()
+        }
+        
           <div className='add-task-buttons'>
             <button className='add-task-button'>
               <Link to={`/newtask/${userId}`}>
@@ -137,27 +220,37 @@ class Dashboard extends Component {
 
         <section className='post-section'>
           <h2 className='post-headline'>POSTS</h2>
-          {posts.length > 0 
+          {posts.length > 0
           ? this.renderPostSection()
           : this.renderNoPosts()}
+
         <div className='add-post'>
             <AddPost />
               </div> 
          </section>
 
-        <section className='do-task-section'>
+         {userTasksDo != null && tasks != null
+         ? this.renderDoTasksSection()
+         : this.renderNoDoTasks()}
+
+        {/* <section className='do-task-section'>
           <h2 className='dashboard-headline'>TO DO</h2>
           <TaskList 
           tasks={doTasks}
           />
-        </section>
+        </section> */}
 
-        <section className='done-task-section'>
+
+        {userTasksDone != null && tasks != null
+        ? this.renderDoneTasksSection()
+        : this.renderNoDoneTasks()
+        }
+        {/* <section className='done-task-section'>
           <h2 className='dashboard-headline'>DONE</h2>
           <TaskList 
           tasks={doneTasks}
           />
-        </section>
+        </section> */}
       </div>   
     );
   }

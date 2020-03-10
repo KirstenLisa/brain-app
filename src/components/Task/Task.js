@@ -21,8 +21,9 @@ class Task extends Component {
     doHandler = (id) => {
       const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
       const username = currentUser.username;
-      const currentTaskId = this.context.currentTask;
-      const doTasks = [ ...this.context.doTasks, currentTaskId ];
+      const currentTaskId = currentUser.current_task;
+      console.log(this.context.doTasks);
+      const doTasks = [ ...currentUser.do_tasks, currentTaskId ];
       const newTask = doTasks.filter(task => task == id);
       const newCurrentTask = parseInt(newTask);
       const newDoTasks = doTasks.filter(task => task != id);

@@ -159,7 +159,7 @@ class RegistrationForm extends React.Component {
         return null;
       }
 
-      UsersApiService.postUser({
+      const newUser = {
         fullname: fullname.value,
         username: username.value,
         password: password.value,
@@ -168,7 +168,11 @@ class RegistrationForm extends React.Component {
         current_task: 1,
         do_tasks: [],
         done_tasks: []
-      })
+      }
+
+      console.log(newUser);
+
+      UsersApiService.postUser(newUser)
         .then(user => {
           fullname.value = '';
           username.value = '';

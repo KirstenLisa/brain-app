@@ -23,6 +23,7 @@ const UsersApiService = {
   },
 
   postUser(newUser) {
+    console.log(newUser)
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',
       headers: {

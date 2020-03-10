@@ -27,11 +27,20 @@ const TokenService = {
   },
 
   saveUserObj(obj) {
+    console.log('save new current user');
     window.sessionStorage.setItem('userObj', JSON.stringify(obj));
+  },
+
+  clearUserObj() {
+    return window.sessionStorage.removeItem('userObj');
   },
 
   saveTasksObj(obj) {
     window.sessionStorage.setItem('tasksObj', JSON.stringify(obj));
+  },
+
+  clearTasksObj() {
+    return window.sessionStorage.removeItem('tasksObj');
   },
 
   savePostsObj(obj) {
