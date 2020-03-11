@@ -96,7 +96,7 @@ class LoginForm extends React.Component {
             UsersApiService.getUser(userName)
             .then(this.context.setCurrentUser(userName));
             TokenService.saveUsername(userName);
-            this.props.history.push(`/dashboard/${userId}`);
+            this.props.history.push(`/dashboard`);
             this.context.setLogin();
            
           })

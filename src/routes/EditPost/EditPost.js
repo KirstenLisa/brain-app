@@ -47,7 +47,9 @@ class EditHomework extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { postId, userId } = this.props.match.params;
+    const { postId } = this.props.match.params;
+    const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+    const userId = currentUser.id;
 
     const { content } = e.target;
 
@@ -70,7 +72,7 @@ class EditHomework extends React.Component {
 
     PostsApiService.updatePost(userId, postId, updatedPost)
       .then(this.context.updatePost(updatedPost))
-      .then(this.props.history.push(`/dashboard/${userId}`))
+      .then(this.props.history.push(`/dashboard`))
       .catch(this.context.setError);
   }
 

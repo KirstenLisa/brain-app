@@ -86,8 +86,9 @@ class AddTask extends Component {
             ) {
               return null;
             }
-
-            const { userId } = this.props.match.params
+            const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+            const userId = currentUser.id;
+            console.log(userId)
             const {description, category } = e.target
             
     
@@ -102,7 +103,7 @@ class AddTask extends Component {
 
     TasksApiService.postTask(newTask)
       .then(this.context.addTask)
-      .then(this.props.history.push(`/dashboard/${userId}`))
+      .then(this.props.history.push(`/dashboard`))
       .catch(this.context.setError);
 }
           
@@ -155,7 +156,7 @@ class AddTask extends Component {
                     </div>
     
                     <div className="task-button-group">
-                        <button type='button' className='cancel-task-button' onClick={() => this.props.history.push('/dashboard/1')}>
+                        <button type='button' className='cancel-task-button' onClick={() => this.props.history.push('/dashboard')}>
                             Cancel
                         </button>
                

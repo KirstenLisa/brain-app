@@ -62,37 +62,37 @@ class App extends Component {
             />
             <Route
               exact
-              path={'/dashboard/:userId'}
+              path={'/dashboard/'}
               component={Dashboard}
               />
 
             <Route
               exact
-              path={'/tasklist/:userId'}
+              path={'/tasklist/'}
               component={AllTasks}
               />
 
             <Route
               exact
-              path={'/posts/:userId/:postId'}
+              path={'/posts/:postId'}
               component={PostPage}
               />
             
             <Route
               exact
-              path={'/addPost/:userId/'}
+              path={'/addPost/'}
               component={AddPost}
               />
             
             <Route 
               exact
-              path={'/editpost/:userId/:postId'}
+              path={'/editpost/:postId'}
               component={EditPost}
               />
 
             <Route
               exact
-              path={'/newtask/:userId'}
+              path={'/newtask'}
               component={AddTask}
               />
         

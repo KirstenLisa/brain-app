@@ -15,7 +15,7 @@ class AllTasks extends Component {
 
     componentDidMount() {
         const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
-        const doList = currentUser.do_tasks;
+        const doList = currentUser.do_tasks || [];
         const currentTask = currentUser.current_task;
         const tasksEx = [ ...doList, currentTask ];
         const temporaryList = this.context.taskList.filter(task => {
@@ -41,7 +41,7 @@ class AllTasks extends Component {
         const id = parseInt(e.id);
         const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
         const username = currentUser.username;
-        const doTasks = currentUser.do_tasks;
+        const doTasks = currentUser.do_tasks || [];
         const newDoTasks = [ ...doTasks, id ];
         const updatedUser = { ...currentUser, do_tasks: newDoTasks };
         UsersApiService.updateUser(username, updatedUser)
@@ -57,7 +57,9 @@ class AllTasks extends Component {
         const allTasks = this.state.temporaryList.map(task => <li className='add-task-list-li' key={task.task_id}>
             {task.description}
             <button className='add-button' type='button' id={task.task_id} onClick={(e) => this.handleAddTask(e.target)}>Add</button></li>);
-        const { userId } = this.props.match.params;
+        const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+        const userId = currentUser.id;
+        console.log(userId);
 
     return(
 
@@ -69,7 +71,7 @@ class AllTasks extends Component {
         <button 
             className='to-dashboard-button'
             type='button'
-            onClick={() => this.props.history.push(`/dashboard/${userId}`)}>
+            onClick={() => this.props.history.push(`/dashboard`)}>
             Dashboard
         </button>
 

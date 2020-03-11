@@ -72,7 +72,9 @@ renderCurrentTask() {
 }
 
   renderPostSection() {
-    const userId = this.props.match.params.userId;
+    const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+    const userId = currentUser.id;
+    console.log(userId);
     const posts = this.state.postList;
     const userPosts = posts.filter(post => userId == post.user_id);
     console.log(userPosts.length);
@@ -149,12 +151,12 @@ renderCurrentTask() {
         <p>What's your bucket list?</p>
         <div className='add-task-buttons'>
             <button className='add-task-button'>
-              <Link to={`/newtask/${userId}`}>
+              <Link to={`/newtask`}>
               Add Task
               </Link>
             </button>
             <button className='add-task-list-button'>
-              <Link to={`/tasklist/${userId}`}>
+              <Link to={`/tasklist`}>
               Task List
               </Link>
             </button>
@@ -181,7 +183,7 @@ renderCurrentTask() {
     const tasks = JSON.parse(sessionStorage.getItem('tasksObj'));
     console.log(tasks);
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
-    const userId = this.props.match.params.userId;
+    const userId = currentUser.id;
     const currentTaskId = currentUser.current_task;
     //const currentTask = tasks.filter(task => task.task_id == currentTaskId);
     const userTasksDo = currentUser.do_tasks;
@@ -206,12 +208,12 @@ renderCurrentTask() {
         
           <div className='add-task-buttons'>
             <button className='add-task-button'>
-              <Link to={`/newtask/${userId}`}>
+              <Link to={`/newtask`}>
               Add Task
               </Link>
             </button>
             <button className='add-task-list-button'>
-              <Link to={`/tasklist/${userId}`}>
+              <Link to={`/tasklist`}>
               Task List
               </Link>
             </button>

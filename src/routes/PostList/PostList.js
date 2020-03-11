@@ -9,7 +9,7 @@ class PostList extends Component {
       const userId = currentUser.id;
       const postList = this.props.postList.map((post, i) => 
                         <li className='post-list-item' id={post.post_id} key={i}>
-                          <Link to={`/posts/${userId}/${post.post_id}`}>
+                          <Link to={`/posts/${post.post_id}`}>
                           {post.content}
                           </Link>
                           </li>);

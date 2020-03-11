@@ -40,7 +40,7 @@ handleCategory = (e, array) => {
 
     render() {
       const tasks = this.props.tasks;
-      const tasklist = this.state.userTasks.map((task, i) => (<li key={i} id={task.task_id}>
+      const tasklist = this.props.tasks.map((task, i) => (<li key={i} id={task.task_id}>
         <Task 
           description={task.description}
           id={task.task_id}
