@@ -52,7 +52,7 @@ class LoginForm extends React.Component {
         if (password === undefined) {
           return 'password is required';
         }
-        if (password.length < 9) {
+        if (password.length < 8) {
           return 'Password must be at least 8 characters long';
         }
       }

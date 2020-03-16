@@ -158,9 +158,9 @@ export class ContextProvider extends Component {
     console.log(currentUser[0].current_task);
     this.setState({ currentUser: currentUser[0] });
     console.log(this.state.currentUser);
-    this.setCurrentTask(currentUser[0].current_task);
-    this.setDoTasks(currentUser[0].do_tasks);
-    this.setDoneTasks(currentUser[0].done_tasks);
+    //this.setCurrentTask(currentUser[0].current_task);
+   // this.setDoTasks(currentUser[0].do_tasks);
+    //this.setDoneTasks(currentUser[0].done_tasks);
     TokenService.saveUserObj(currentUser[0]);
     //TokenService.saveUser(currentUser);
   };
@@ -178,23 +178,22 @@ export class ContextProvider extends Component {
     this.setState({ doTasks: newDoTasks });
   };
 
-  setDoTasks = doTasks => {
-    console.log(doTasks);
-    this.setState({ doTasks });
-  };
+  // setDoTasks = doTasks => {
+  //   console.log(doTasks);
+  //   this.setState({ doTasks });
+  // };
 
-  setDoneTasks = doneTasks => {
-    this.setState({ doneTasks });
-    console.log(this.state.doneTasks);
-  };
+  // setDoneTasks = doneTasks => {
+  //   this.setState({ doneTasks });
+  //   console.log(this.state.doneTasks);
+  // };
 
   updateCurrentUser = (updatedUser) => {
     console.log('update user');
     this.setState({ currentUser: updatedUser});
-    console.log(this.state.currentUser);
-    this.setCurrentTask(updatedUser.current_task);
-    this.setDoTasks(updatedUser.do_tasks);
-    this.setDoneTasks(updatedUser.done_tasks);
+    //this.setCurrentTask(updatedUser.current_task);
+    //this.setDoTasks(updatedUser.do_tasks);
+    //this.setDoneTasks(updatedUser.done_tasks);
     TokenService.saveUserObj(updatedUser);
    };
 

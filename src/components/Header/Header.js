@@ -74,10 +74,10 @@ export default class Header extends Component {
     </h1>
       )}
 
-    renderDashboardLink(userId) {
+    renderDashboardLink() {
       return (
       <h1>
-          <Link className='main-link' to={`/dashboard/${userId}`}>
+          <Link className='main-link' to={`/dashboard`}>
             NEW APP
           </Link>
         </h1>

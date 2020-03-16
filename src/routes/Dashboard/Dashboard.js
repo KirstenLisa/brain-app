@@ -24,7 +24,6 @@ class Dashboard extends Component {
       .then(this.context.setPostList)
       .then(this.getPosts)
       .catch(this.setError);
-      console.log(JSON.parse(sessionStorage.getItem('postsObj')))
  }
 
  getPosts = () => {
@@ -39,6 +38,10 @@ class Dashboard extends Component {
     const doTasks = currentUser.do_tasks;
     const randomNum = doTasks[Math.floor(Math.random() * doTasks.length)];
     const newCurrentTask = randomNum;
+    console.log(randomNum);
+    console.log(doTasks);
+    const newDoTasks = doTasks.filter(task => task != randomNum);
+    console.log('new do tasks ' + newDoTasks);
     const newDoneTasks = [ ...currentUser.done_tasks, taskId ];
     const updatedUser = {
       id: currentUser.id,
@@ -47,7 +50,7 @@ class Dashboard extends Component {
       email: currentUser.email,
       profile_pic: currentUser.profile_pic,
       current_task: newCurrentTask,
-      do_tasks: currentUser.done_tasks,
+      do_tasks: newDoTasks,
       done_tasks: newDoneTasks
     }
     UsersApiService.updateUser(username, updatedUser)
@@ -74,10 +77,8 @@ renderCurrentTask() {
   renderPostSection() {
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
     const userId = currentUser.id;
-    console.log(userId);
     const posts = this.state.postList;
     const userPosts = posts.filter(post => userId == post.user_id);
-    console.log(userPosts.length);
     if(userPosts.length > 0) {
       return(
     
@@ -179,15 +180,12 @@ renderCurrentTask() {
     // const posts = this.context.postList;
     // const tasks = this.context.taskList;
     const posts = this.state.postList;
-    console.log(posts.length);
     const tasks = JSON.parse(sessionStorage.getItem('tasksObj'));
-    console.log(tasks);
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
     const userId = currentUser.id;
     const currentTaskId = currentUser.current_task;
     //const currentTask = tasks.filter(task => task.task_id == currentTaskId);
     const userTasksDo = currentUser.do_tasks;
-    console.log(currentUser.do_tasks);
     //const doTasks = tasks.filter(({task_id}) => userTasksDo.includes(task_id))
     const userTasksDone = currentUser.done_tasks;
     //const doneTasks = tasks.filter(({task_id}) => userTasksDone.includes(task_id))
@@ -236,24 +234,14 @@ renderCurrentTask() {
          ? this.renderDoTasksSection()
          : this.renderNoDoTasks()}
 
-        {/* <section className='do-task-section'>
-          <h2 className='dashboard-headline'>TO DO</h2>
-          <TaskList 
-          tasks={doTasks}
-          />
-        </section> */}
+      
 
 
         {userTasksDone != null && tasks != null
         ? this.renderDoneTasksSection()
         : this.renderNoDoneTasks()
         }
-        {/* <section className='done-task-section'>
-          <h2 className='dashboard-headline'>DONE</h2>
-          <TaskList 
-          tasks={doneTasks}
-          />
-        </section> */}
+
       </div>   
     );
   }

@@ -52,8 +52,9 @@ deleteHandler = (taskId) => {
   const updatedUser = { ...currentUser, do_tasks: newDoTasks };
   UsersApiService.updateUser(username, updatedUser)
     .then(this.context.updateCurrentUser(updatedUser))
+    .then(this.setState({userTasks: this.props.tasks}))
     .catch(this.context.setError);
-  this.setState({userTasks: newDoTasks});
+  
 };
 
 doHandler = (id) => {
@@ -78,6 +79,7 @@ doHandler = (id) => {
 
     render() {
       const tasks = this.props.tasks;
+      console.log(tasks);
       const tasklist = this.state.userTasks.map((task, i) => (<li key={i} id={task.task_id}>
         <Task 
           description={task.description}
@@ -86,6 +88,7 @@ doHandler = (id) => {
           deleteHandler={this.deleteHandler}
             />
             </li>))
+      console.log(this.state.userTasks);
       const categoriesUnique = this.getUnique(this.props.tasks, 'category');
       const categories = categoriesUnique.map((category, i) => 
           (<button 

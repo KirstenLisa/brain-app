@@ -13,6 +13,7 @@ const UsersApiService = {
     );
   },
   getUser(username) {
+    console.log(username);
     return fetch(`${config.API_ENDPOINT}/users/${username}`, {
       headers: {
         'content-type': 'application/json'

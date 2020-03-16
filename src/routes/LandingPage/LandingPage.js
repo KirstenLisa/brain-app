@@ -21,7 +21,6 @@ const LandingPage = () => {
         <p>
           Train your brain muscles by doing everyday something new. Choose from a list of tasks or create your own individual bucket list. But keep it simple: Choose only tasks that you can do in ONE DAY.
         </p>
-        <p>Pictures cannot be uploaded yet</p>
         <p className='call-to-action'>Yal-la! <Link className='yalla-login' to='./login'>Let's do this</Link></p>
       </div>
     </div>

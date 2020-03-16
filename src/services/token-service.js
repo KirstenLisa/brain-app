@@ -2,7 +2,7 @@ import config from '../config';
 
 const TokenService = {
   saveAuthToken(token) {
-    console.log(token);
+    console.log('save token ' + token);
     window.sessionStorage.setItem(config.TOKEN_KEY, token);
   },
   getAuthToken() {
@@ -19,6 +19,7 @@ const TokenService = {
   },
 
   saveUsername(username) {
+    console.log('save username');
     return window.sessionStorage.setItem('username', username);
   },
 
