@@ -8,9 +8,9 @@ const AppContext = React.createContext({
     postList: [],
     taskList: [],
     currentUser: [],
-    currentTask: [],
-    doTasks: [],
-    doneTasks: [],
+    //currentTask: [],
+    //doTasks: [],
+    //doneTasks: [],
     setUsersList: () => {},
     setPostList: () => {},
     setTaskList: () => {},
@@ -19,15 +19,15 @@ const AppContext = React.createContext({
     addTask: () => {},
     deletePost: () => {},
     updatePost: () => {},
-    deleteDoneTask: () => {},
+    //deleteDoneTask: () => {},
     setLogin: () => {},
     clearError: () => {},
     error: null,
     isLoggedIn: false,
     setCurrentUser: () => {},
-    setCurrentTask: () => {},
-    setDoTasks: () => {},
-    setDoneTasks: () => {},
+    //setCurrentTask: () => {},
+    //setDoTasks: () => {},
+    //setDoneTasks: () => {},
     addDoTask: () => {},
     addDoneTask: () => {},
     deleteDoTask: () => {},
@@ -47,6 +47,7 @@ export class ContextProvider extends Component {
   };
 
   componentDidMount() {
+    console.log('context mount');
     TasksApiService.getTasks()
       .then(this.setTaskList)
      .catch(this.setError);
@@ -56,6 +57,7 @@ export class ContextProvider extends Component {
   }
 
   setUsersList = usersList => {
+    console.log('set users list');
     this.setState({ usersList });
   };
 
@@ -109,12 +111,12 @@ export class ContextProvider extends Component {
     this.setPostList(newPostList);
   };
 
-  deleteDoneTask = taskId => {
-    const newDoneTaskList = this.state.done_tasks.filter(
-      task => task.task_id != taskId
-    );
-    this.setDoneTasks(newDoneTaskList);
-  };
+  // deleteDoneTask = taskId => {
+  //   const newDoneTaskList = this.state.done_tasks.filter(
+  //     task => task.task_id != taskId
+  //   );
+  //   this.setDoneTasks(newDoneTaskList);
+  // };
 
   updatePost = updatedPost => {
     const newPostList = this.state.postList.map(post =>
@@ -133,25 +135,25 @@ export class ContextProvider extends Component {
   };
 
 
-  addDoTask = newTask => {
-    console.log(newTask);
-    const newDoTasks = [...this.state.doTasks, newTask];
-    console.log(newDoTasks);
-    this.setDoTasks([...this.state.doTasks, newTask]);
-  };
+  // addDoTask = newTask => {
+  //   console.log(newTask);
+  //   const newDoTasks = [...this.state.doTasks, newTask];
+  //   console.log(newDoTasks);
+  //   this.setDoTasks([...this.state.doTasks, newTask]);
+  // };
 
 
-  addDoneTask = newTask => {
-    this.setDoneTasks([...this.state.doneTasks, newTask]);
-  };
+  // addDoneTask = newTask => {
+  //   this.setDoneTasks([...this.state.doneTasks, newTask]);
+  // };
 
-  deleteDoTask = id => {
-    console.log('delete task');
-    const newDoTaskList = this.state.doTasks.filter(
-      task => task != id
-    );
-    this.setDoTasks(newDoTaskList);
-  }
+  // deleteDoTask = id => {
+  //   console.log('delete task');
+  //   const newDoTaskList = this.state.doTasks.filter(
+  //     task => task != id
+  //   );
+  //   this.setDoTasks(newDoTaskList);
+  // }
 
   setCurrentUser = username => {
     const currentUser = this.state.usersList.filter(user => user.username == username);
@@ -165,18 +167,18 @@ export class ContextProvider extends Component {
     //TokenService.saveUser(currentUser);
   };
 
-  setCurrentTask = currentTask => {
-    this.setState({ currentTask });
-  };
+  // setCurrentTask = currentTask => {
+  //   this.setState({ currentTask });
+  // };
 
-  deleteCurrentTask = () => {
-    const doTasks = this.state.doTasks;
-    const randomNum = doTasks[Math.floor(Math.random() * doTasks.length)];
-    console.log(randomNum);
-    const newDoTasks = doTasks.filter(task => task !== randomNum);
-    this.setState({ currentTask: randomNum });
-    this.setState({ doTasks: newDoTasks });
-  };
+  // deleteCurrentTask = () => {
+  //   const doTasks = this.state.doTasks;
+  //   const randomNum = doTasks[Math.floor(Math.random() * doTasks.length)];
+  //   console.log(randomNum);
+  //   const newDoTasks = doTasks.filter(task => task !== randomNum);
+  //   this.setState({ currentTask: randomNum });
+  //   this.setState({ doTasks: newDoTasks });
+  // };
 
   // setDoTasks = doTasks => {
   //   console.log(doTasks);
@@ -203,9 +205,9 @@ export class ContextProvider extends Component {
         postList: this.state.postList,
         taskList: this.state.taskList,
         currentUser: this.state.currentUser,
-        currentTask: this.state.currentTask,
-        doTasks: this.state.doTasks,
-        doneTasks: this.state.doneTasks,
+        //currentTask: this.state.currentTask,
+        //doTasks: this.state.doTasks,
+        //doneTasks: this.state.doneTasks,
         setUsersList: this.setUsersList,
         setPostList: this.setPostList,
         setTaskList: this.setTaskList,
@@ -213,7 +215,7 @@ export class ContextProvider extends Component {
         addPost: this.addPost,
         addTask: this.addTask,
         deletePost: this.deletePost,
-        deleteDoneTask: this.deleteDoneTask,
+        //deleteDoneTask: this.deleteDoneTask,
         updatePost: this.updatePost,
         error: this.state.error,
         setError: this.setError,
@@ -221,13 +223,13 @@ export class ContextProvider extends Component {
         isLoggedIn: this.state.isLoggedIn,
         setLogin: this.setLogin,
         setCurrentUser: this.setCurrentUser,
-        setCurrentTask: this.setCurrentTask,
-        setDoTasks: this.setDoTasks,
-        setDoneTasks: this.setDoneTasks,
-        addDoTask: this.addDoTask,
-        addDoneTask: this.addDoneTask,
-        deleteDoTask: this.deleteDoTask,
-        deleteCurrentTask: this.deleteCurrentTask,
+        //setCurrentTask: this.setCurrentTask,
+        //setDoTasks: this.setDoTasks,
+        //setDoneTasks: this.setDoneTasks,
+        //addDoTask: this.addDoTask,
+        //addDoneTask: this.addDoneTask,
+        //deleteDoTask: this.deleteDoTask,
+        //deleteCurrentTask: this.deleteCurrentTask,
         updateCurrentUser: this.updateCurrentUser
     };
     return (

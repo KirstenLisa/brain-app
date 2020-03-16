@@ -72,8 +72,8 @@ class LoginForm extends React.Component {
         const { username, password } = e.target;
     
         const userName = username.value;
-        const user = this.context.usersList.filter(user => user.username == userName);
-        const userId = user[0].id;
+        //const user = this.context.usersList.filter(user => user.username == userName);
+        //const userId = user[0].id;
     
         if (this.validateForm()) {
           return null;
