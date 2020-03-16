@@ -56,7 +56,7 @@ class PostPage extends Component {
                         </button>
                         <button 
                         className='back-button'
-                        onClick={() => this.props.history.push(`/dashboard/${userId}`)}
+                        onClick={() => this.props.history.push(`/dashboard`)}
                         >
                             Back
                         </button>

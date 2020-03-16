@@ -6,6 +6,7 @@ import AppContext from '../../AppContext';
 import ValidationError from '../../components/ValidationError';
 import uuid from 'uuid/v4';
 import './AddPost.css';
+import { throwStatement } from '@babel/types';
 
 
 class AddPost extends Component {
@@ -113,7 +114,8 @@ class AddPost extends Component {
       console.log('submit post');
 
       const { content } = e.target;
-      const userId = this.props.match.params.userId;
+      const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+      const userId = currentUser.id;
 
       const newPost = {
         post_id: uuid(),
@@ -128,6 +130,9 @@ class AddPost extends Component {
         .then(this.context.addPost(newPost))
         .then(this.formRef.reset())
         .catch(this.context.setError);
+      
+      this.props.getPosts();
+        console.log(JSON.parse(sessionStorage.getItem('postsObj')))
     }
 
     render() {

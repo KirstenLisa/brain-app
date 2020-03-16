@@ -227,7 +227,8 @@ renderCurrentTask() {
           : this.renderNoPosts()}
 
         <div className='add-post'>
-            <AddPost />
+            <AddPost 
+            getPosts={this.getPosts}/>
               </div> 
          </section>
 
