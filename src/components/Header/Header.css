@@ -33,9 +33,29 @@ nav {
 .logout-button {
   background-color: #F24182;
   border: 2px solid  #F2C53D;
-  width: 100px;
+  width: 80px;
 }
 
 .logout-button:hover {
   background-color: #F2C53D;
 }
+
+@media screen and (min-width: 720px) {
+
+  .logout-button {
+    width: 100px;
+  }
+
+  .login-link, .registration-link {
+    font-size: 20px;
+  }
+
+}
+
+@media screen and (min-width: 980px) {
+
+  .login-link, .registration-link {
+    font-size: 24px;
+  }
+}
+

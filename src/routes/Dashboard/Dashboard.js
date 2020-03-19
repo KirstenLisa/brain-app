@@ -145,8 +145,6 @@ renderCurrentTask() {
   }
 
   renderNoDoTasks = () => {
-    const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
-    const userId = currentUser.id;
     return( 
       <section>
         <p>What's your bucket list?</p>
@@ -182,8 +180,8 @@ renderCurrentTask() {
     const posts = this.state.postList;
     const tasks = JSON.parse(sessionStorage.getItem('tasksObj'));
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
-    const userId = currentUser.id;
-    const currentTaskId = currentUser.current_task;
+    //const userId = currentUser.id;
+    //const currentTaskId = currentUser.current_task;
     //const currentTask = tasks.filter(task => task.task_id == currentTaskId);
     const userTasksDo = currentUser.do_tasks;
     //const doTasks = tasks.filter(({task_id}) => userTasksDo.includes(task_id))
@@ -219,7 +217,7 @@ renderCurrentTask() {
         </section>
 
         <section className='post-section'>
-          <h2 className='post-headline'>POSTS</h2>
+          <h2 className='post-headline'>WHAT'S UP?</h2>
           {posts.length > 0
           ? this.renderPostSection()
           : this.renderNoPosts()}

@@ -12,13 +12,8 @@ class TaskList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userTasks: []
+      category: ''
     };
-  }
-
-   componentDidMount () {
-     console.log(this.props.tasks)
-     this.setState({userTasks: this.props.tasks})
   }
 
   getUnique = (arr, comp) => {
@@ -38,8 +33,7 @@ class TaskList extends Component {
 handleCategory = (e, array) => {
   e.preventDefault();
   const category = e.target.value;
-  const filteredTasks = array.filter(item => item.category == category);
-  this.setState({userTasks: filteredTasks});
+  this.setState({ category });
   console.log(this.state.userTasks);
 };
 
@@ -78,24 +72,42 @@ doHandler = (id) => {
 }
 
     render() {
-      const tasks = this.props.tasks;
-      console.log(tasks);
-      const tasklist = this.state.userTasks.map((task, i) => (<li key={i} id={task.task_id}>
-        <Task 
-          description={task.description}
-          id={task.task_id}
-          doHandler={this.doHandler}
-          deleteHandler={this.deleteHandler}
-            />
-            </li>))
-      console.log(this.state.userTasks);
+
+      let tasklist = {}
+      const category = this.state.category;
+      
+      
+      if(category) {
+        console.log(category);
+        const tasks = this.props.tasks.filter(task => task.category == category);
+        console.log(tasks);
+        tasklist = tasks.map((task, i) => (<li key={i} id={task.task_id}>
+          <Task 
+            description={task.description}
+            id={task.task_id}
+            doHandler={this.doHandler}
+            deleteHandler={this.deleteHandler}
+              />
+              </li>))
+        
+      } else {
+        tasklist = this.props.tasks.map((task, i) => (<li key={i} id={task.task_id}>
+          <Task 
+            description={task.description}
+            id={task.task_id}
+            doHandler={this.doHandler}
+            deleteHandler={this.deleteHandler}
+              />
+              </li>))
+      }
+           
       const categoriesUnique = this.getUnique(this.props.tasks, 'category');
       const categories = categoriesUnique.map((category, i) => 
           (<button 
             className={category.category}
             id={uuid()}
             value={category.category}
-            onClick={e => this.handleCategory(e, tasks)}>
+            onClick={e => this.handleCategory(e)}>
             {category.category}
        </button>))
 

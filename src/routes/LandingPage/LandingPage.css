@@ -1,4 +1,10 @@
-.call-to-action {
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#call-to-action {
     font-size: 26px;
     color: #F24182;
 }
@@ -6,4 +12,44 @@
 .yalla-login:hover {
     font-size: 28px;
     color: #223454;
+}
+
+@media screen and (min-width: 720px) {
+
+    .app-explanation > h3 {
+        font-size: 26px;
+    }
+
+    .testUserList {
+        font-size: 24px;
+    }
+
+    .app-explanation > p {
+        font-size: 20px;
+    }
+
+    #call-to-action {
+        font-size: 28px;
+    }
+    
+}
+
+@media screen and (min-width: 980px) {
+
+    .app-explanation > h3 {
+        font-size: 28px;
+    }
+
+    .testUserList {
+        font-size: 26px;
+    }
+
+    .app-explanation > p {
+        font-size: 22px;
+    }
+
+    #call-to-action {
+        font-size: 28px;
+    }
+    
 }

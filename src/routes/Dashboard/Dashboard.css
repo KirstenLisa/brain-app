@@ -24,12 +24,89 @@
     border-radius: 3px;
 }
 
+.current-task-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .doing-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
     background-color: #F24182;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
+@media screen and (min-width: 720px) {
+
+    .profile-pic {
+        height: 120px;
+        width: 120px;
+    }
+
+    .welcome-headline {
+        font-size: 28px;
+    }
+
+    .doing-section {
+        width: 70%;
+    }
+
+    .post-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .add-post-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #file-input, #status {
+        font-size: 24px;
+    }
+
+    .add-post-button {
+        font-size: 26px;
+    }
+
+}
+
+@media screen and (min-width: 980px) {
+
+    .profile-pic {
+        height: 130px;
+        width: 130px;
+    }
+
+    .welcome-headline {
+        font-size: 32px;
+    }
+
+    .welcome-headline {
+        font-size: 28px;
+    }
+
+    .doing-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 55%;
+        height: 200px;
+    }
+
+
+    #file-input, #status {
+        font-size: 28px;
+        align-self: center;
+    }
+
+  
+
+
+}

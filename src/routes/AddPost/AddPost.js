@@ -140,20 +140,16 @@ class AddPost extends Component {
     
     return (
       <section className='add-post-section'>
-        
-        <input 
-        type='file' 
-        id='file-input'
-        onChange={this.initUpload}/>
-        <p id="status">Please select a file</p>
-        <p>{this.state.post_pic.value}</p>
-        <img 
-          id='preview'
-          alt='preview' 
-          src={this.state.post_pic.value}
-          value={this.state.post_pic.value}></img>
 
           <form onSubmit={this.postSubmitHandler} className='add-post-form' ref={el => this.formRef = el}>
+
+            <div className='upload-picture'>
+            <input 
+              type='hidden' 
+              id='image-url' 
+              name='image-url' 
+              value='/images/alpaka_dancing.jpg'
+              />
             <div className='add-content'>
               <label htmlFor='content'>Tell the world</label>
               <input
@@ -169,16 +165,6 @@ class AddPost extends Component {
                 <ValidationError message={this.validateContent()} id='fullNameError' />
               )}
             </div>
-
-            
-            <div className='upload-picture'>
-            <input 
-              type='hidden' 
-              id='image-url' 
-              name='image-url' 
-              value='/images/alpaka_dancing.jpg'
-              />
-           
             
             </div>
             <div className='post-form__actions'>
@@ -189,6 +175,18 @@ class AddPost extends Component {
                   </button>
             </div>
           </form>
+
+          <input 
+        type='file' 
+        id='file-input'
+        onChange={this.initUpload}/>
+        <p id="status">Please select a file</p>
+        <p>{this.state.post_pic.value}</p>
+        <img 
+          id='preview'
+          alt='preview' 
+          src={this.state.post_pic.value}
+          value={this.state.post_pic.value}></img>
       </section>
     );
             }

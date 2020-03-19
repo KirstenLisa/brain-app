@@ -1,0 +1,27 @@
+.RegistrationPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RegistrationPage > h2 {
+    font-size: 32px;
+    text-align: center;
+    color: #3966BF;
+}
+
+@media screen and (min-width: 720px) {
+
+    .RegistrationPage > h2 {
+        font-size: 34px;
+    }
+
+}
+
+@media screen and (min-width: 980px) {
+
+    .RegistrationPage > h2 {
+        font-size: 36px;
+    }
+}
+    

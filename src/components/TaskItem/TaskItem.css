@@ -21,3 +21,19 @@
     background-color: #223454;
 }
 
+
+@media screen and (min-width: 980px) {
+
+    .task-item-headline {
+        font-size: 32px;
+    }
+
+    .task-done {
+        font-size: 26px;
+    }
+
+    .add-task-button, .add-task-list-button {
+        font-size: 26px;
+    }
+
+}

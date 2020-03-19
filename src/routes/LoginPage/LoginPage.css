@@ -1,3 +1,9 @@
+.LoginPage > h2 {
+    font-size: 32px;
+    text-align: center;
+    color: #3966BF;
+}
+
 .LoginPage > p {
     font-size: 18px;
 }
@@ -8,4 +14,38 @@
 
 .register-link:hover {
     font-size: 25px;
+}
+
+@media screen and (min-width: 720px) {
+
+    .LoginPage > h2 {
+        font-size: 34px;
+    }
+
+    .LoginPage > p {
+        font-size: 20px;
+        margin-left: 60px;
+    }
+
+    .register-link {
+        font-size: 20px;
+        margin-left: 60px;
+    }
+}
+
+@media screen and (min-width: 980px) {
+
+    .LoginPage > h2 {
+        font-size: 36px;
+    }
+    
+    .LoginPage > p {
+        font-size: 22px;
+        margin-left: 150px;
+    }
+
+    .register-link {
+        font-size: 22px;
+        margin-left: 150px;
+    }
 }
