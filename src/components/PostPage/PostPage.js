@@ -13,14 +13,14 @@ class PostPage extends Component {
         const { userId, postId } = this.props.match.params;
         PostsApiService.deletePost(userId, postId)
             .then(this.context.deletePost(postId))
-            .then(this.props.history.push(`/dashboard/${userId}`))
+            .then(this.props.history.push(`/dashboard`))
             .catch(this.context.setError);  
     }
 
     editPost = e => {
         e.preventDefault();
-        const { userId, postId } = this.props.match.params;
-        this.props.history.push(`/editpost/${userId}/${postId}`)
+        const { postId } = this.props.match.params;
+        this.props.history.push(`/editpost/${postId}`)
     }
 
     render() {
