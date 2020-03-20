@@ -22,9 +22,13 @@ const PostItem = (props) => {
             <h4 className='post-item-headline'>
                 {props.currentPost.content}
             </h4>
-            <p className='post-date'>
+            {props.currentPost.date == undefined || props.currentPost.date == [] || props.currentPost.date == ''? 
+              (<p>no date</p>)
+              :
+            (<p className='post-date'>
                 {format(new Date(props.currentPost.date), 'do MMM yyyy')}
-            </p>
+            </p>)}
+           
         </div>
     )
 };

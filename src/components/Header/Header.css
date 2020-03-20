@@ -33,7 +33,6 @@ nav {
 .logout-button {
   background-color: #F24182;
   border: 2px solid  #F2C53D;
-  width: 80px;
 }
 
 .logout-button:hover {

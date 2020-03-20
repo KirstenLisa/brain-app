@@ -25,20 +25,26 @@ class PostPage extends Component {
 
     render() {
 
-        const { postId, userId } = this.props.match.params;
+        const { postId } = this.props.match.params;
         const posts = this.context.postList;
         const currentPost = posts.filter(post => post.post_id == postId);
 
         return(
             <div className='post-page'>
+                {currentPost[0] == undefined || currentPost[0] == [] || currentPost[0] == '' ?
+                    <p>np pic :-(</p>
+                    :
                 <img 
                 className='post-pic'
                 src={ currentPost[0].post_pic } 
-                alt='post-pic'></img>
+                alt='post-pic'></img>}
+                {currentPost[0] == undefined || currentPost[0] == [] || currentPost[0] == '' ?
+                <p></p>
+                :
                 <h4 className='post-page-content'>
                     {currentPost[0].content}
-                </h4>
-                {currentPost[0].date == undefined || currentPost[0].date == [] || currentPost[0].date == ''? 
+                </h4>}
+                {currentPost[0] == undefined || currentPost[0] == [] || currentPost[0] == ''? 
                     (<p className='post-page-date'>no date</p>) 
                     :
                     (<p className='post-page-date'>{format(new Date(currentPost[0].date), 'do MMM yyyy')}</p>)}
