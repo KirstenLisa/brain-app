@@ -58,7 +58,6 @@ getPost(userId, postId) {
     );
   },
   addPost(newPost) {
-    console.log(newPost);
     return fetch(`${config.API_ENDPOINT}/posts`, {
       method: 'POST',
       headers: {

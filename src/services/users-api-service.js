@@ -13,7 +13,6 @@ const UsersApiService = {
     );
   },
   getUser(username) {
-    console.log(username);
     return fetch(`${config.API_ENDPOINT}/users/${username}`, {
       headers: {
         'content-type': 'application/json'
@@ -24,7 +23,6 @@ const UsersApiService = {
   },
 
   postUser(newUser) {
-    console.log(newUser)
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',
       headers: {
@@ -37,7 +35,6 @@ const UsersApiService = {
   },
 
   updateUser(username, updatedUser) {
-    console.log('update user');
     return fetch(`${config.API_ENDPOINT}/users/${username}`, {
       method: 'PATCH',
       headers: {

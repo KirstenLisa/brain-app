@@ -16,23 +16,23 @@ The App consists of two basic features:
 
 
 
-<h1>Start page</h1>
+<h1>Landing page</h1>
 
- <img src="screenshots/start-page-desktop.png" display="block" alt="screenshot desktop">
- <img src="screenshots/startpage_mobile.png" width="200px" display="block" alt="screenshot mobile">
+ <img src="screenshots/LPDesktop.png" display="block" alt="screenshot desktop">
+ <img src="screenshots/LPMobile.png" width="200px" display="block" alt="screenshot mobile">
 
 
 
 <h1>Registration</h1>
 
 <img src="screenshots/registration_desktop.png"  alt="screenshot desktop">
-<img src="screenshots/registration_mobile.png" width="200px" alt="screenshot mobile">
+<img src="screenshots/RegistrationMobile.png" width="200px" alt="screenshot mobile">
 
 
 <h1>Login:</h1>
 
 <img src="screenshots/login_desktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/login_mobile.png" width="200px" display="block" alt="screenshot mobile">
+<img src="screenshots/LoginMobile.png" width="200px" display="block" alt="screenshot mobile">
 
 
 <h1>Dashboard</h1>

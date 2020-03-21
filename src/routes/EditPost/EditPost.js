@@ -18,7 +18,6 @@ class EditHomework extends React.Component {
   componentDidMount() {
     const { postId } = this.props.match.params;
     const currentPost = this.context.postList.filter(post => post.post_id == postId);
-    console.log(currentPost[0].profile_pic);
     this.setState({
         content: { value: currentPost[0].content, touched: false },
         post_pic: currentPost[0].post_pic
@@ -68,7 +67,6 @@ class EditHomework extends React.Component {
       return null;
     }
 
-    console.log(updatedPost);
 
     PostsApiService.updatePost(userId, postId, updatedPost)
       .then(this.context.updatePost(updatedPost))

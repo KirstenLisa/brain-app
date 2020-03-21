@@ -19,7 +19,6 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    console.log('mount');
     PostsApiService.getPosts()
       .then(this.context.setPostList)
       .then(this.getPosts)
@@ -38,10 +37,7 @@ class Dashboard extends Component {
     const doTasks = currentUser.do_tasks;
     const randomNum = doTasks[Math.floor(Math.random() * doTasks.length)];
     const newCurrentTask = randomNum;
-    console.log(randomNum);
-    console.log(doTasks);
     const newDoTasks = doTasks.filter(task => task != randomNum);
-    console.log('new do tasks ' + newDoTasks);
     const newDoneTasks = [ ...currentUser.done_tasks, taskId ];
     const updatedUser = {
       id: currentUser.id,
@@ -174,19 +170,11 @@ renderCurrentTask() {
   }
 
   render() {
-    console.log('render dashboard');
-    // const posts = this.context.postList;
-    // const tasks = this.context.taskList;
     const posts = this.state.postList;
     const tasks = JSON.parse(sessionStorage.getItem('tasksObj'));
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
-    //const userId = currentUser.id;
-    //const currentTaskId = currentUser.current_task;
-    //const currentTask = tasks.filter(task => task.task_id == currentTaskId);
     const userTasksDo = currentUser.do_tasks;
-    //const doTasks = tasks.filter(({task_id}) => userTasksDo.includes(task_id))
     const userTasksDone = currentUser.done_tasks;
-    //const doneTasks = tasks.filter(({task_id}) => userTasksDone.includes(task_id))
     const username = sessionStorage.getItem('username');
 
     return (

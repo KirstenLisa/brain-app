@@ -46,7 +46,6 @@ class AddTask extends Component {
     
           validateSelection() {
               const selectedCategory = this.state.category.value;
-              console.log('selectedCategory:' + selectedCategory);
               if(selectedCategory === "None" || selectedCategory === '' || selectedCategory === undefined) {
                 return 'Category is required';
               }
@@ -86,19 +85,13 @@ class AddTask extends Component {
             ) {
               return null;
             }
-            const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
-            const userId = currentUser.id;
-            console.log(userId)
             const {description, category } = e.target
             
     
             const newTask = {
-                //task_id: new Date().getUTCMilliseconds(),
                 description: description.value,
                 category: category.value 
             }
-
-            console.log(newTask)
       
 
     TasksApiService.postTask(newTask)

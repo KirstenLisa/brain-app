@@ -29,9 +29,7 @@ class RegistrationForm extends React.Component {
     }
 
     uploadFile = (file, signedRequest, url) => {
-      console.log(url);
       const xhr = new XMLHttpRequest();
-      console.log(signedRequest);
       xhr.open('PUT', signedRequest);
       xhr.onreadystatechange = () => {
         if(xhr.readyState === 4){
@@ -48,8 +46,6 @@ class RegistrationForm extends React.Component {
     }
 
     getSignedRequest = (file) => {
-      console.log(file.name);
-      console.log(file);
       const xhr = new XMLHttpRequest();
       xhr.open('GET', `${config.API_ENDPOINT}/sign-s3?file-name=${file.name}&file-type=${file.type}`);
       xhr.onreadystatechange = () => {
@@ -57,9 +53,7 @@ class RegistrationForm extends React.Component {
           if(xhr.status === 200){
             const response = JSON.parse(xhr.responseText);
             this.uploadFile(file, response.signedRequest, response.url);
-            console.log(response.url);
             this.setState({post_pic: { value: 'response.url' }});
-            console.log(response.signedRequest);
           }
           else{
             alert('Could not get signed URL.');
@@ -72,7 +66,6 @@ class RegistrationForm extends React.Component {
     initUpload = () => {
       const files = document.getElementById('file-input').files;
       const file = files[0];
-      console.log(file);
       if(file == null){
         return alert('No file selected.');
       }
@@ -169,8 +162,6 @@ class RegistrationForm extends React.Component {
         do_tasks: [],
         done_tasks: []
       }
-
-      console.log(newUser);
 
       UsersApiService.postUser(newUser)
         .then(user => {

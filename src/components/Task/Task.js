@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AppContext from '../../AppContext';
-import UsersApiService from '../../services/users-api-service';
 import './Task.css';
 
 class Task extends Component {

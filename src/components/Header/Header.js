@@ -69,7 +69,7 @@ export default class Header extends Component {
       return (
       <h1>
       <Link className='main-link' to='/'>
-       NEW APP
+       BRAIN APP
       </Link>
     </h1>
       )}
@@ -78,7 +78,7 @@ export default class Header extends Component {
       return (
       <h1>
           <Link className='main-link' to={`/dashboard`}>
-            NEW APP
+            BRAIN APP
           </Link>
         </h1>
       )}
@@ -86,7 +86,6 @@ export default class Header extends Component {
 
   render() {
     const username = sessionStorage.getItem('username')
-    console.log(this.state.loggedIn)
     return (
       <nav className='Header'>
         <img className='logo' src={brainLogo} alt='school-logo'/> 

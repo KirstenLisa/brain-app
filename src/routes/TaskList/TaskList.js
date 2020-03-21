@@ -34,11 +34,9 @@ handleCategory = (e, array) => {
   e.preventDefault();
   const category = e.target.value;
   this.setState({ category });
-  console.log(this.state.userTasks);
 };
 
 deleteHandler = (taskId) => {
-  console.log(taskId);
   const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
   const username = currentUser.username;
   const doTasks = currentUser.do_tasks;
@@ -52,17 +50,14 @@ deleteHandler = (taskId) => {
 };
 
 doHandler = (id) => {
-  console.log(id);
   const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
   const username = currentUser.username;
   const currentTaskId = currentUser.current_task;
-  console.log(this.context.doTasks);
   const doTasks = [ ...currentUser.do_tasks, currentTaskId ];
   const newTask = doTasks.filter(task => task == id);
   const newCurrentTask = parseInt(newTask);
   const newDoTasks = doTasks.filter(task => task != id);
   const newUserTasks = this.props.tasks.filter(({task_id}) => newDoTasks.includes(task_id))
-  console.log(newUserTasks);
   const updatedUser = {...currentUser, do_tasks: newDoTasks, current_task: newCurrentTask};
   UsersApiService.updateUser(username, updatedUser)
     .then(this.context.updateCurrentUser(updatedUser))
@@ -78,9 +73,7 @@ doHandler = (id) => {
       
       
       if(category) {
-        console.log(category);
         const tasks = this.props.tasks.filter(task => task.category == category);
-        console.log(tasks);
         tasklist = tasks.map((task, i) => (<li key={i} id={task.task_id}>
           <Task 
             description={task.description}

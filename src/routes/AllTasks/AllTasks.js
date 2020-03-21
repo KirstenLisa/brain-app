@@ -46,7 +46,6 @@ class AllTasks extends Component {
         const updatedUser = { ...currentUser, do_tasks: newDoTasks };
         UsersApiService.updateUser(username, updatedUser)
           .then(this.context.updateCurrentUser(updatedUser))
-          .then(console.log(this.context.currentUser))
           .then(this.deleteTask(id))
           .catch(this.context.setError);
     };
@@ -57,9 +56,6 @@ class AllTasks extends Component {
         const allTasks = this.state.temporaryList.map(task => <li className='add-task-list-li' key={task.task_id}>
             {task.description}
             <button className='add-button' type='button' id={task.task_id} onClick={(e) => this.handleAddTask(e.target)}>Add</button></li>);
-        const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
-        const userId = currentUser.id;
-        console.log(userId);
 
     return(
 

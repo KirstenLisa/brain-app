@@ -6,8 +6,6 @@ import AppContext from '../../AppContext';
 import ValidationError from '../../components/ValidationError';
 import uuid from 'uuid/v4';
 import './AddPost.css';
-import { throwStatement } from '@babel/types';
-
 
 class AddPost extends Component {
 
@@ -51,8 +49,6 @@ class AddPost extends Component {
       request.
     */
     getSignedRequest = (file) => {
-      console.log(file.name);
-      console.log(file);
       const xhr = new XMLHttpRequest();
       xhr.open('GET', `${config.API_ENDPOINT}/sign-s3?file-name=${file.name}&file-type=${file.type}`);
       xhr.onreadystatechange = () => {
@@ -60,7 +56,6 @@ class AddPost extends Component {
           if(xhr.status === 200){
             const response = JSON.parse(xhr.responseText);
             this.uploadFile(file, response.signedRequest, response.url);
-            console.log(response.url);
             this.setState({post_pic: { value: 'response.url' }});
           }
           else{
@@ -78,7 +73,6 @@ class AddPost extends Component {
     initUpload = () => {
       const files = document.getElementById('file-input').files;
       const file = files[0];
-      console.log(file);
       if(file == null){
         return alert('No file selected.');
       }
@@ -111,7 +105,6 @@ class AddPost extends Component {
       if (this.validateForm()) {
         return null;
       }
-      console.log('submit post');
 
       const { content } = e.target;
       const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
@@ -124,7 +117,6 @@ class AddPost extends Component {
         post_pic: this.state.post_pic.value,
         date: new Date(),
       };
-      console.log(newPost);
 
       PostsApiService.addPost(newPost)
         .then(this.context.addPost(newPost))
@@ -132,7 +124,6 @@ class AddPost extends Component {
         .catch(this.context.setError);
       
       this.props.getPosts();
-        console.log(JSON.parse(sessionStorage.getItem('postsObj')))
     }
 
     render() {
