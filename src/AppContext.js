@@ -51,13 +51,9 @@ export class ContextProvider extends Component {
     TasksApiService.getTasks()
       .then(this.setTaskList)
      .catch(this.setError);
-    // PostsApiService.getPosts()
-    //   .then(this.setPostList)
-    //   .catch(this.setError);
   }
 
   setUsersList = usersList => {
-    console.log('set users list');
     this.setState({ usersList });
   };
 
@@ -84,19 +80,15 @@ export class ContextProvider extends Component {
   };
 
   addPost = newPost => {
-    console.log('inside context');
     this.setPostList([...this.state.postList, newPost]);
-    console.log(this.state.postList)
   };
  
   addTask = newTask => {
-    console.log(newTask);
     this.setTaskList([...this.state.taskList, newTask]);
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
     const username = currentUser.username;
     const doTasks = currentUser.do_tasks;
     const newDoTasks = [ ...doTasks, newTask.task_id ];
-    console.log(newDoTasks);
     const updatedUser = { ...currentUser, do_tasks: newDoTasks };
     this.updateCurrentUser(updatedUser);
     UsersApiService.updateUser(username, updatedUser)
@@ -111,13 +103,6 @@ export class ContextProvider extends Component {
     this.setPostList(newPostList);
   };
 
-  // deleteDoneTask = taskId => {
-  //   const newDoneTaskList = this.state.done_tasks.filter(
-  //     task => task.task_id != taskId
-  //   );
-  //   this.setDoneTasks(newDoneTaskList);
-  // };
-
   updatePost = updatedPost => {
     const newPostList = this.state.postList.map(post =>
       post.post_id == updatedPost.post_id ? updatedPost : post
@@ -128,74 +113,19 @@ export class ContextProvider extends Component {
   };
 
   setLogin = () => {
-    console.log('set login');
     this.state.isLoggedIn
       ? this.setState({ isLoggedIn: false })
       : this.setState({ isLoggedIn: true });
   };
 
-
-  // addDoTask = newTask => {
-  //   console.log(newTask);
-  //   const newDoTasks = [...this.state.doTasks, newTask];
-  //   console.log(newDoTasks);
-  //   this.setDoTasks([...this.state.doTasks, newTask]);
-  // };
-
-
-  // addDoneTask = newTask => {
-  //   this.setDoneTasks([...this.state.doneTasks, newTask]);
-  // };
-
-  // deleteDoTask = id => {
-  //   console.log('delete task');
-  //   const newDoTaskList = this.state.doTasks.filter(
-  //     task => task != id
-  //   );
-  //   this.setDoTasks(newDoTaskList);
-  // }
-
   setCurrentUser = username => {
     const currentUser = this.state.usersList.filter(user => user.username == username);
-    console.log(currentUser[0].current_task);
     this.setState({ currentUser: currentUser[0] });
-    console.log(this.state.currentUser);
-    //this.setCurrentTask(currentUser[0].current_task);
-   // this.setDoTasks(currentUser[0].do_tasks);
-    //this.setDoneTasks(currentUser[0].done_tasks);
     TokenService.saveUserObj(currentUser[0]);
-    //TokenService.saveUser(currentUser);
   };
 
-  // setCurrentTask = currentTask => {
-  //   this.setState({ currentTask });
-  // };
-
-  // deleteCurrentTask = () => {
-  //   const doTasks = this.state.doTasks;
-  //   const randomNum = doTasks[Math.floor(Math.random() * doTasks.length)];
-  //   console.log(randomNum);
-  //   const newDoTasks = doTasks.filter(task => task !== randomNum);
-  //   this.setState({ currentTask: randomNum });
-  //   this.setState({ doTasks: newDoTasks });
-  // };
-
-  // setDoTasks = doTasks => {
-  //   console.log(doTasks);
-  //   this.setState({ doTasks });
-  // };
-
-  // setDoneTasks = doneTasks => {
-  //   this.setState({ doneTasks });
-  //   console.log(this.state.doneTasks);
-  // };
-
   updateCurrentUser = (updatedUser) => {
-    console.log('update user');
     this.setState({ currentUser: updatedUser});
-    //this.setCurrentTask(updatedUser.current_task);
-    //this.setDoTasks(updatedUser.do_tasks);
-    //this.setDoneTasks(updatedUser.done_tasks);
     TokenService.saveUserObj(updatedUser);
    };
 
@@ -205,9 +135,6 @@ export class ContextProvider extends Component {
         postList: this.state.postList,
         taskList: this.state.taskList,
         currentUser: this.state.currentUser,
-        //currentTask: this.state.currentTask,
-        //doTasks: this.state.doTasks,
-        //doneTasks: this.state.doneTasks,
         setUsersList: this.setUsersList,
         setPostList: this.setPostList,
         setTaskList: this.setTaskList,
@@ -215,7 +142,6 @@ export class ContextProvider extends Component {
         addPost: this.addPost,
         addTask: this.addTask,
         deletePost: this.deletePost,
-        //deleteDoneTask: this.deleteDoneTask,
         updatePost: this.updatePost,
         error: this.state.error,
         setError: this.setError,
@@ -223,13 +149,6 @@ export class ContextProvider extends Component {
         isLoggedIn: this.state.isLoggedIn,
         setLogin: this.setLogin,
         setCurrentUser: this.setCurrentUser,
-        //setCurrentTask: this.setCurrentTask,
-        //setDoTasks: this.setDoTasks,
-        //setDoneTasks: this.setDoneTasks,
-        //addDoTask: this.addDoTask,
-        //addDoneTask: this.addDoneTask,
-        //deleteDoTask: this.deleteDoTask,
-        //deleteCurrentTask: this.deleteCurrentTask,
         updateCurrentUser: this.updateCurrentUser
     };
     return (
