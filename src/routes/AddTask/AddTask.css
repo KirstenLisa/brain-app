@@ -48,3 +48,43 @@
     font-family: Roboto, sans-serif;
     
 }
+
+@media screen and (min-width: 720px) {
+
+  .add-task-form > h2 {
+    font-size: 24px;
+  }
+
+  .description, .category-select {
+    font-size: 20px;
+  }
+
+  .category-select > select {
+    font-size: 20px;
+  }
+
+  .cancel-task-button, .save-task-button {
+    font-size: 20px;
+  }
+
+}
+
+@media screen and (min-width: 980px) {
+
+  .add-task-form > h2 {
+    font-size: 28px;
+  }
+
+  .description, .category-select {
+    font-size: 24px;
+  }
+
+  .category-select > select {
+    font-size: 24px;
+  }
+
+  .cancel-task-button, .save-task-button {
+    font-size: 26px;
+    width: 115px;
+  }
+}

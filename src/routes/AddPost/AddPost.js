@@ -166,18 +166,17 @@ class AddPost extends Component {
                   </button>
             </div>
           </form>
-
+        <div className='input-preview'>
           <input 
         type='file' 
         id='file-input'
         onChange={this.initUpload}/>
-        <p id="status">Please select a file</p>
-        <p>{this.state.post_pic.value}</p>
         <img 
           id='preview'
           alt='preview' 
           src={this.state.post_pic.value}
           value={this.state.post_pic.value}></img>
+          </div>
       </section>
     );
             }

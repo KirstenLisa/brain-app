@@ -30,3 +30,9 @@
     display: none;
 }
 
+@media screen and (min-width: 720px) {
+
+    .task-list-item {
+        margin-right: 12px;
+    }
+}

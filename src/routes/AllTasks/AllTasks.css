@@ -41,3 +41,27 @@
     border: 2px solid #F2C53D;
     color: #223454;
 }
+
+@media screen and (min-width: 720px) {
+
+    .all-tasks-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .all-tasks-list > ul {
+        width: 65%;
+    }
+}
+
+@media screen and (min-width: 980px) {
+
+    .all-tasks-list > ul {
+        width: 35%;
+    }
+
+    .all-tasks-list > ul > li {
+        margin: 15px;
+    }
+}

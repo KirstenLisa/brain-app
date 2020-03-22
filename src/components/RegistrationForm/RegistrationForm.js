@@ -191,18 +191,18 @@ class RegistrationForm extends React.Component {
   
       return (
         <section className='add-user-section'>
+          <div className='add-user-1'>
         
         <input 
         type='file' 
         id='file-input'
         onChange={this.initUpload}/>
-        <p id='status'>Please select a profile picture</p>
-        <p>{this.state.profile_pic.value}</p>
         <img 
           id='preview'
           alt='preview' 
           src={this.state.profile_pic.value}
           value={this.state.profile_pic.value}></img>
+          </div>
         <form className='registration-form' onSubmit={this.handleSubmit}>
           <div role='alert' className='registrationError'>
             {error && <p>{error.message}</p>}

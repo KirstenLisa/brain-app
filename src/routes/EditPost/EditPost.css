@@ -6,6 +6,7 @@
     background-color: #3966BF;
     padding: 15px;
     margin-bottom: 15px;
+    margin-top: 20px;
     border: 1px solid #3966BF;
     border-radius: 5px;
   }
@@ -59,4 +60,23 @@
 
 .post-pic-display {
     width: 100%;
+}
+
+@media screen and (min-width: 720px) {
+
+  .edit-post-form {
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+
+@media screen and (min-width: 980px) {
+
+  .edit-post-form {
+    width: 55%;
+  }
+
+
 }

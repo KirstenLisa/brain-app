@@ -25,57 +25,63 @@ The App consists of two basic features:
 
 <h1>Registration</h1>
 
-<img src="screenshots/registration_desktop.png"  alt="screenshot desktop">
+<img src="screenshots/RegistrationDesktop.png"  alt="screenshot desktop">
 <img src="screenshots/RegistrationMobile.png" width="200px" alt="screenshot mobile">
 
 
 <h1>Login:</h1>
 
-<img src="screenshots/login_desktop.png" display="block" alt="screenshot desktop">
+<img src="screenshots/LoginDesktop.png" display="block" alt="screenshot desktop">
 <img src="screenshots/LoginMobile.png" width="200px" display="block" alt="screenshot mobile">
 
 
 <h1>Dashboard</h1>
 
-<img src="screenshots/dashboard_desktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/daschboard_mobile.png" width="200px" display="block" alt="screenshot mobile">
+<img src="screenshots/DashboardDesktop.png" display="block" alt="screenshot desktop">
+<img src="screenshots/DaschboardMobile.png" width="200px" display="block" alt="screenshot mobile">
 
 
-<h1>To Do Section</h1>
+<h1>Dashboard: To Do Section</h1>
 
-<img src="screenshots/homework_desktop_teacher.png" display="block" alt="screenshot desktop">
-<img src="screenshots/homework_mobile_teacher.png" width="200px" display="block" alt="screenshot mobile">
-
-
-
-<h1>Post Section</h1>
-
-<img src="screenshots/update_desktop_teacher.png" display="block" alt="screenshot desktop">
-<img src="screenshots/update_mobile-teacher.png" width="200px" display="block" alt="screenshot mobile">
+<img src="screenshots/DashboardDesktopToDo.png" display="block" alt="screenshot desktop">
+<img src="screenshots/DashboardMobileToDo.png" width="200px" display="block" alt="screenshot mobile">
 
 
-<h1>Done Section</h1>
 
-<img src="screenshots/add_comment_desktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/add_comment_mobile.png" width="200px" display="block" alt="screenshot mobile">
+<h1>Dashboard: Post Section</h1>
+
+<img src="screenshots/DashboardDesktopPost.png" display="block" alt="screenshot desktop">
+<img src="screenshots/DashboardMobilePost.png" width="200px" display="block" alt="screenshot mobile">
+
+
+<h1>Dashboard: Add Post Section</h1>
+
+<img src="screenshots/DashboardDesktopAddPost.png" display="block" alt="screenshot desktop">
+<img src="screenshots/DashboardMobileAddPost.png" width="200px" display="block" alt="screenshot mobile">
+
+
+<h1>Dashboard: Done Section</h1>
+
+<img src="screenshots/DashboardDesktopDone.png" display="block" alt="screenshot desktop">
+<img src="screenshots/DashboardMobileDone.png" width="200px" display="block" alt="screenshot mobile">
 
 
 <h1>Task List</h1>
 
-<img src="screenshots/email_desktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/email_mobile.png" width="200px" display="block" alt="screenshot mobile">
+<img src="screenshots/TaskListDesktop.png" display="block" alt="screenshot desktop">
+<img src="screenshots/TaskListMobile.png" width="200px" display="block" alt="screenshot mobile">
 
 
 <h1>Add Task</h1>
 
-<img src="screenshots/email_desktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/email_mobile.png" width="200px" display="block" alt="screenshot mobile">
+<img src="screenshots/NewTaskDesktop.png" display="block" alt="screenshot desktop">
+<img src="screenshots/AddTaskMobile.png" width="200px" display="block" alt="screenshot mobile">
 
 
 <h1>Edit Post</h1>
 
-<img src="screenshots/email_desktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/email_mobile.png" width="200px" display="block" alt="screenshot mobile">
+<img src="screenshots/EditPostDesktop.png" display="block" alt="screenshot desktop">
+<img src="screenshots/EditPost.png" width="200px" display="block" alt="screenshot mobile">
 
 
 Built with:

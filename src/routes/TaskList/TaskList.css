@@ -35,3 +35,54 @@
     border: 2px solid #3966BF;
 }
 
+@media screen and (min-width: 720px) {
+
+    .task-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .category-links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .category-links > button {
+        width: 200px;
+    }
+
+    .task-list {
+        width: 65%;
+        padding-top: 10px;
+    }
+}
+
+
+@media screen and (min-width: 980px) {
+
+    .do-task-section {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .task-section {
+        width: 90%;
+        justify-content: space-around;
+    }
+
+
+    .category-links > button {
+        width: 200px;
+        height: 80px;
+    }
+
+    .task-list {
+        width: 60%;
+        padding-top: 10px;
+        margin-right: 30px;
+    }
+}
+
+

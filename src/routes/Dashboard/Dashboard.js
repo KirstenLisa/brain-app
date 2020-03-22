@@ -78,7 +78,7 @@ renderCurrentTask() {
     if(userPosts.length > 0) {
       return(
     
-        <div>
+        <div className='post-section-items'>
           <div className='post-item'>
               <PostItem 
               currentPost={userPosts[0]}
@@ -204,6 +204,13 @@ renderCurrentTask() {
           </div>
         </section>
 
+    
+
+         {userTasksDo != null && tasks != null
+         ? this.renderDoTasksSection()
+         : this.renderNoDoTasks()}
+
+      
         <section className='post-section'>
           <h2 className='post-headline'>WHAT'S UP?</h2>
           {posts.length > 0
@@ -215,13 +222,6 @@ renderCurrentTask() {
             getPosts={this.getPosts}/>
               </div> 
          </section>
-
-         {userTasksDo != null && tasks != null
-         ? this.renderDoTasksSection()
-         : this.renderNoDoTasks()}
-
-      
-
 
         {userTasksDone != null && tasks != null
         ? this.renderDoneTasksSection()

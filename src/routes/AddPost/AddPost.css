@@ -22,6 +22,13 @@
     width: 100%;
 }
 
+.input-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .add-post-button{
     background-color: #3966BF;
     border: 2px solid  #3966BF;
@@ -75,7 +82,7 @@
     }
 
     #file-input {
-        align-self: center;
+        font-size: 22px;
     }
 
 }

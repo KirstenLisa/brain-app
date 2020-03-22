@@ -1,0 +1,17 @@
+.Hyph {
+    font-size: 18px;
+}
+
+@media screen and (min-width: 720px) {
+
+    .Hyph {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 980px) {
+
+    .Hyph {
+        font-size: 28px;
+    }
+}
