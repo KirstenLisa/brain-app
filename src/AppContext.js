@@ -47,7 +47,6 @@ export class ContextProvider extends Component {
   };
 
   componentDidMount() {
-    console.log('context mount');
     TasksApiService.getTasks()
       .then(this.setTaskList)
      .catch(this.setError);

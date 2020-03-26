@@ -35,10 +35,19 @@ class Dashboard extends Component {
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
     const username = currentUser.username;
     const doTasks = currentUser.do_tasks;
-    const randomNum = doTasks[Math.floor(Math.random() * doTasks.length)];
-    const newCurrentTask = randomNum;
-    const newDoTasks = doTasks.filter(task => task != randomNum);
-    const newDoneTasks = [ ...currentUser.done_tasks, taskId ];
+    let newCurrentTask = null;
+    let newDoTasks = [];
+    if(doTasks != null) {
+      const randomNum = doTasks[Math.floor(Math.random() * doTasks.length)]
+      newCurrentTask = randomNum;
+      newDoTasks = doTasks.filter(task => task != randomNum);
+    }
+    let newDoneTasks = [];
+    if(currentUser.done_tasks == null) {
+      newDoneTasks = [taskId];  
+    } else {newDoneTasks = [ ...currentUser.done_tasks, taskId ];
+    }
+    
     const updatedUser = {
       id: currentUser.id,
       username: currentUser.username,

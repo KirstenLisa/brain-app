@@ -5,7 +5,6 @@ const TaskItem = (props) => {
 
     return(
         <div className='task-item'>
-          {props.currentTask == undefined && (<p>EWRTGZHJK</p>)}
           {props.currentTask[0] !== undefined &&
             (<div className='task-item'>
               <h4 className='task-item-headline'>

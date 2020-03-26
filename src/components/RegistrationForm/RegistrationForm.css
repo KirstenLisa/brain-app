@@ -19,6 +19,11 @@
     justify-content: center;
 }
 
+.preview-label {
+    display: block;
+    font-size: 18px;
+}
+
 .registration-form {
     display: block;
     width: 90%;
@@ -102,6 +107,9 @@ button {
         flex: 1;
     }
 
+    .preview-label {
+        font-size: 24px;
+    }
 
     .add-user-1 {
         display: flex;

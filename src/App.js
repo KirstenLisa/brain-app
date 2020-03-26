@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import GoogleFontLoader from 'react-google-font-loader';
 import { Route } from 'react-router-dom'
-//import PrivateRoute from './utils/PrivateRoute';
-//import PublicOnlyRoute from './utils/PublicOnlyRoute';
 import Header from './components/Header/Header';
 import LandingPage from './routes/LandingPage/LandingPage';
 import LoginPage from './routes/LoginPage/LoginPage';

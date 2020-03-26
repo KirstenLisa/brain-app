@@ -25,7 +25,6 @@ class RegistrationForm extends React.Component {
     componentDidMount() {
       this.context.clearError();
       this.setState({ profile_pic: {value: '/images/alpaka_funny.jpg'}})
-      // ALL API GOES HERE
     }
 
     uploadFile = (file, signedRequest, url) => {
@@ -191,8 +190,8 @@ class RegistrationForm extends React.Component {
   
       return (
         <section className='add-user-section'>
+          <label for='file-input' class='preview-label'>Please add a profile pic</label>
           <div className='add-user-1'>
-        
         <input 
         type='file' 
         id='file-input'

@@ -166,6 +166,7 @@ class AddPost extends Component {
                   </button>
             </div>
           </form>
+          <label for='file-input' class='preview-label'>Add a pic</label>
         <div className='input-preview'>
           <input 
         type='file' 
