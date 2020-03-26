@@ -21,7 +21,7 @@ class EditHomework extends React.Component {
     this.setState({
         content: { value: currentPost[0].content, touched: false },
         post_pic: currentPost[0].post_pic
-    })
+    });
   }
 
   validateContent() {

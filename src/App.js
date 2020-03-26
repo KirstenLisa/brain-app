@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GoogleFontLoader from 'react-google-font-loader';
-import { Route } from 'react-router-dom'
+import { Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import LandingPage from './routes/LandingPage/LandingPage';
 import LoginPage from './routes/LoginPage/LoginPage';
@@ -11,7 +11,7 @@ import PostPage from './components/PostPage/PostPage';
 import AddPost from './routes/AddPost/AddPost';
 import AddTask from './routes/AddTask/AddTask';
 import EditPost from './routes/EditPost/EditPost';
-import './App.css'
+import './App.css';
 
 
 class App extends Component {
