@@ -4,7 +4,7 @@ import ValidationError from '../../components/ValidationError';
 import AppContext from '../../AppContext';
 import './EditPost.css';
 
-class EditHomework extends React.Component {
+class EditPost extends React.Component {
   static contextType = AppContext;
 
   constructor(props) {
@@ -127,4 +127,4 @@ class EditHomework extends React.Component {
   }
 }
 
-export default EditHomework;
+export default EditPost;

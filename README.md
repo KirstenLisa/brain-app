@@ -38,7 +38,7 @@ The App consists of two basic features:
 <h1>Dashboard</h1>
 
 <img src="screenshots/DashboardDesktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/DaschboardMobile.png" width="200px" display="block" alt="screenshot mobile">
+<img src="screenshots/DashboardMobile.png" width="200px" display="block" alt="screenshot mobile">
 
 
 <h1>Dashboard: To Do Section</h1>

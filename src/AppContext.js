@@ -8,26 +8,21 @@ const AppContext = React.createContext({
     postList: [],
     taskList: [],
     currentUser: [],
-    //currentTask: [],
-    //doTasks: [],
-    //doneTasks: [],
+    doTasks: [],
     setUsersList: () => {},
     setPostList: () => {},
     setTaskList: () => {},
+    setDoTasks: () => {},
     addUser: () => {},
     addPost: () => {},
     addTask: () => {},
     deletePost: () => {},
     updatePost: () => {},
-    //deleteDoneTask: () => {},
     setLogin: () => {},
     clearError: () => {},
     error: null,
     isLoggedIn: false,
     setCurrentUser: () => {},
-    //setCurrentTask: () => {},
-    //setDoTasks: () => {},
-    //setDoneTasks: () => {},
     addDoTask: () => {},
     addDoneTask: () => {},
     deleteDoTask: () => {},
@@ -42,6 +37,7 @@ export class ContextProvider extends Component {
     usersList: [],
     postList: [],
     taskList: [],
+    doTasks: [],
     error: null,
     isLoggedIn: false
   };
@@ -57,14 +53,19 @@ export class ContextProvider extends Component {
   };
 
   setPostList = postList => {
-    this.setState({ postList});
     TokenService.savePostsObj(postList);
+    this.setState({ postList });
   };
 
   setTaskList = taskList => {
     this.setState({ taskList });
     TokenService.saveTasksObj(taskList);
   };
+
+  setDoTasks = () => {
+    const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+     this.setState({ doTasks: currentUser.do_tasks});
+   };
 
   setError = error => {
     this.setState({ error });
@@ -86,7 +87,7 @@ export class ContextProvider extends Component {
     this.setTaskList([...this.state.taskList, newTask]);
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
     const username = currentUser.username;
-    const doTasks = currentUser.do_tasks;
+    const doTasks = currentUser.do_tasks || [];
     const newDoTasks = [ ...doTasks, newTask.task_id ];
     const updatedUser = { ...currentUser, do_tasks: newDoTasks };
     this.updateCurrentUser(updatedUser);
@@ -133,6 +134,7 @@ export class ContextProvider extends Component {
         usersList: this.state.usersList,
         postList: this.state.postList,
         taskList: this.state.taskList,
+        doTasks: this.state.doTasks,
         currentUser: this.state.currentUser,
         setUsersList: this.setUsersList,
         setPostList: this.setPostList,
@@ -148,7 +150,8 @@ export class ContextProvider extends Component {
         isLoggedIn: this.state.isLoggedIn,
         setLogin: this.setLogin,
         setCurrentUser: this.setCurrentUser,
-        updateCurrentUser: this.updateCurrentUser
+        updateCurrentUser: this.updateCurrentUser,
+        setDoTasks: this.setDoTasks
     };
     return (
       <AppContext.Provider value={contextValue}>

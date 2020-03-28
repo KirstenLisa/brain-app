@@ -20,9 +20,9 @@ class AddPost extends Component {
       };
     }
 
-    componentDidMount() {
-      this.setState({post_pic: { value: '/images/dulli_mud.jpeg' }});
-    }
+    // componentDidMount() {
+    //   this.setState({post_pic: { value: '/images/dulli_mud.jpeg' }});
+    // }
 
 
     uploadFile = (file, signedRequest, url) => {
@@ -172,11 +172,11 @@ class AddPost extends Component {
         type='file' 
         id='file-input'
         onChange={this.initUpload}/>
-        <img 
+        {this.state.post_pic.value && (<img 
           id='preview'
           alt='preview' 
           src={this.state.post_pic.value}
-          value={this.state.post_pic.value}></img>
+          value={this.state.post_pic.value}></img>)}
           </div>
       </section>
     );

@@ -10,7 +10,9 @@ class PostPage extends Component {
 
     handlePostDelete = e => {
         e.preventDefault();
-        const { userId, postId } = this.props.match.params;
+        const { postId } = this.props.match.params;
+        const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
+        const userId = currentUser.id;
         PostsApiService.deletePost(userId, postId)
             .then(this.context.deletePost(postId))
             .then(this.props.history.push(`/dashboard`))
@@ -32,7 +34,7 @@ class PostPage extends Component {
         return(
             <div className='post-page'>
                 {currentPost[0] == undefined || currentPost[0] == [] || currentPost[0] == '' ?
-                    <p>np pic :-(</p>
+                    <p>no pic :-(</p>
                     :
                 <img 
                 className='post-pic'

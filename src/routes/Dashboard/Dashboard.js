@@ -15,7 +15,8 @@ class Dashboard extends Component {
   static contextType = AppContext;
 
   state = {
-    postList: []
+    postList: [],
+    doList: []
   }
 
   componentDidMount() {
@@ -23,10 +24,15 @@ class Dashboard extends Component {
       .then(this.context.setPostList)
       .then(this.getPosts)
       .catch(this.setError);
+    this.context.setDoTasks();
  }
 
  getPosts = () => {
   this.setState({ postList:JSON.parse(sessionStorage.getItem('postsObj'))})
+ }
+
+ getTasks = () => {
+   this.setState({doList: this.context.doTasks});
  }
 
 
@@ -34,7 +40,7 @@ class Dashboard extends Component {
     const taskId = parseInt(e.id);
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
     const username = currentUser.username;
-    const doTasks = currentUser.do_tasks;
+    const doTasks = this.state.doList;
     let newCurrentTask = null;
     let newDoTasks = [];
     if(doTasks != null) {
@@ -83,6 +89,7 @@ renderCurrentTask() {
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
     const userId = currentUser.id;
     const posts = this.state.postList;
+    console.log('dashboard state: ' + this.state.postList.length);
     const userPosts = posts.filter(post => userId == post.user_id);
     if(userPosts.length > 0) {
       return(
