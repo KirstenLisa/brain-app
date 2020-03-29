@@ -29,11 +29,11 @@
     font-size: 23px;
     border-radius: 3px;
     margin: 10px;
-    color: white; 
+    color:  #223454;
 }
 
 .loginButton, .cancelButton {
-    background-color: #F24182;
+    background-color: white;
     border: 2px solid  #F2C53D;
     width: 100px;
 }
@@ -97,6 +97,7 @@
 
     .loginButton, .cancelButton {
         width: 100px;
+        color: #223454;
     }
 
     .error, .login_error {

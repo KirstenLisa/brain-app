@@ -129,18 +129,18 @@ class AddTask extends Component {
                             id="description"
                             onChange={e => this.updateDescription(e.target.value)}
                             aria-required="true" 
-                            aria-describedby="nameError"/>
+                        />
                         {this.state.description.touched && (
                         <ValidationError message={descriptionError} id="nameError" />)}
                     </div>
     
                     <div className="category-select">
-                        <label htmlFor="cateory">Select a category:</label>
+                        <label htmlFor="category">Select a category:</label>
                         <select
                         name="category"
+                        id="category"
                         onChange={e => this.updateCategory(e.target.value)}
-                        aria-required="true" 
-                        aria-describedby="categoryError">
+                        aria-required="true">
                         <option value={"None"}>Select one...</option>
                         {categories}
                         </select>

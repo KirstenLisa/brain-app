@@ -4,14 +4,22 @@
     align-items: center;
 }
 
+ul {
+    list-style: none;
+}
+
+
 #call-to-action {
+    color: white;
     font-size: 26px;
-    color: #F24182;
+    background-color: #3966BF;
+    padding: 15px;
+    border-radius: 5px;
 }
 
 .yalla-login:hover {
     font-size: 28px;
-    color: #223454;
+    color: white;
 }
 
 @media screen and (min-width: 720px) {

@@ -54,17 +54,17 @@
     align-items: center;
     justify-content: space-evenly;
     margin-top: 20px;
+    color: #223454;
 }
 
 button {
-    color: white;
     font-size: 23px;
     border-radius: 3px;
     margin: 10px;
 }
 
 .submitRegistration, .cancelRegistration {
-    background-color: #F24182;
+    background-color: white;
     border: 2px solid  #F2C53D;
 }
 

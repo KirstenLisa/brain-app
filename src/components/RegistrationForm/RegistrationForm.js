@@ -208,7 +208,7 @@ class RegistrationForm extends React.Component {
           </div>
   
           <div className='fullname'>
-            <label htmlFor='RegistrationForm__full_name'>Full name</label>
+            <label htmlFor='fullname'>Full name</label>
             <input
               type='text'
               className='registration_input'
@@ -226,7 +226,7 @@ class RegistrationForm extends React.Component {
           </div>
   
           <div className='user_name'>
-            <label htmlFor='RegistrationForm__user_name'>User name</label>
+            <label htmlFor='username'>User name</label>
             <input
               type='text'
               className='registration_input'
@@ -234,7 +234,7 @@ class RegistrationForm extends React.Component {
               id='username'
               onChange={e => this.updateUsername(e.target.value)}
               aria-required='true'
-              placeholder='User Name'
+              placeholder='Username'
             />
             <div className='registration_error'>
               {this.state.username.touched && (
@@ -243,7 +243,7 @@ class RegistrationForm extends React.Component {
             </div>
           </div>
           <div className='email'>
-            <label htmlFor='RegistrationForm__email'>Email</label>
+            <label htmlFor='email'>Email</label>
             <input
               className='registration_input'
               name='email'
@@ -261,7 +261,7 @@ class RegistrationForm extends React.Component {
           </div>
          
           <div className='password'>
-            <label htmlFor='RegistrationForm__password'>Password</label>
+            <label htmlFor='password'>Password</label>
             <input
               className='registration_input'
               name='password'

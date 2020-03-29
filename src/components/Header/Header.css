@@ -9,7 +9,7 @@ a:-webkit-any-link {
 }
 
 a:hover {
-  color: #223454;
+  color: white;
 }
 
 .logo {
@@ -31,6 +31,7 @@ nav {
     }
 
 .logout-button {
+  color: white;
   background-color: #F24182;
   border: 2px solid  #F2C53D;
 }

@@ -104,7 +104,11 @@ class AddPost extends Component {
       e.preventDefault();
       if (this.validateForm()) {
         return null;
-      }
+      } 
+
+      if(this.validateContent()) {
+        return null
+      } 
 
       const { content } = e.target;
       const currentUser = JSON.parse(sessionStorage.getItem('userObj'));

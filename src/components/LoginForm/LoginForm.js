@@ -72,8 +72,6 @@ class LoginForm extends React.Component {
         const { username, password } = e.target;
     
         const userName = username.value;
-        //const user = this.context.usersList.filter(user => user.username == userName);
-        //const userId = user[0].id;
     
         if (this.validateForm()) {
           return null;
@@ -121,7 +119,7 @@ class LoginForm extends React.Component {
               {error && <p>{error.message}</p>}
             </div>
             <div className='username'>
-              <label htmlFor='LoginForm__user_name'>User name</label>
+              <label htmlFor='username'>User name</label>
               <input
                 type='text'
                 className='login_input'
@@ -129,7 +127,7 @@ class LoginForm extends React.Component {
                 id='username'
                 onChange={e => this.updateUsername(e.target.value)}
                 aria-required='true'
-                placeholder='User Name'
+                placeholder='Username'
               />
               <div className='login_error'>
                 {this.state.username.touched && (
@@ -139,7 +137,7 @@ class LoginForm extends React.Component {
             </div>
     
             <div className='password'>
-              <label htmlFor='LoginForm__password'>Password</label>
+              <label htmlFor='password'>Password</label>
               <input
                 className='login_input'
                 name='password'
