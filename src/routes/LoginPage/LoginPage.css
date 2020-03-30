@@ -10,6 +10,8 @@
 
 .register-link {
     font-size: 22px;
+    background-color: #3966BF;
+    padding: 15px;
 }
 
 .register-link:hover {

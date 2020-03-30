@@ -15,8 +15,7 @@ class Dashboard extends Component {
   static contextType = AppContext;
 
   state = {
-    postList: [],
-    doList: []
+    postList: []
   }
 
   componentDidMount() {
@@ -24,29 +23,28 @@ class Dashboard extends Component {
       .then(this.context.setPostList)
       .then(this.getPosts)
       .catch(this.setError);
-    this.context.setDoTasks();
+   // this.context.setDoTasks(() => this.getTasks());
  }
 
  getPosts = () => {
   this.setState({ postList:JSON.parse(sessionStorage.getItem('postsObj'))})
  }
 
- getTasks = () => {
-   this.setState({doList: this.context.doTasks});
- }
+//  getTasks = () => {
+//    this.setState({doList: this.context.doTasks});
+//  }
 
 
   doneHandler = (e) => {
     const taskId = parseInt(e.id);
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
     const username = currentUser.username;
-    const doTasks = this.state.doList;
+    let doTasks = currentUser.do_tasks || [];
     let newCurrentTask = null;
-    let newDoTasks = [];
     if(doTasks != null) {
       const randomNum = doTasks[Math.floor(Math.random() * doTasks.length)]
       newCurrentTask = randomNum;
-      newDoTasks = doTasks.filter(task => task != randomNum);
+      doTasks = doTasks.filter(task => task != randomNum);
     }
     let newDoneTasks = [];
     if(currentUser.done_tasks == null) {
@@ -61,7 +59,7 @@ class Dashboard extends Component {
       email: currentUser.email,
       profile_pic: currentUser.profile_pic,
       current_task: newCurrentTask,
-      do_tasks: newDoTasks,
+      do_tasks: doTasks,
       done_tasks: newDoneTasks
     }
     UsersApiService.updateUser(username, updatedUser)
@@ -89,7 +87,6 @@ renderCurrentTask() {
     const currentUser = JSON.parse(sessionStorage.getItem('userObj'));
     const userId = currentUser.id;
     const posts = this.state.postList;
-    console.log('dashboard state: ' + this.state.postList.length);
     const userPosts = posts.filter(post => userId == post.user_id);
     if(userPosts.length > 0) {
       return(
