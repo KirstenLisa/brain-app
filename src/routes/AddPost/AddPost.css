@@ -36,9 +36,16 @@
     width: 100px;
 }
 
+.preview-label {
+    display: block;
+    text-align: center;
+    margin: 15px;
+}
+
 #file-input {
+    display: flex;
     font-size: 18px;
-    width: 90%;
+    width: 100%;
 }
 
 
@@ -83,8 +90,8 @@
     }
 
     #file-input {
+        justify-content: space-between;
         font-size: 22px;
-        width: 60%;
     }
 
 }
@@ -98,6 +105,10 @@
 
     .add-post {
         width: 100%;
+    }
+
+    .preview-label {
+        margin: 25px;
     }
     
  }

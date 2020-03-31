@@ -63,7 +63,7 @@ class RegistrationForm extends React.Component {
     }
 
     initUpload = () => {
-      const files = document.getElementById('file-input').files;
+      const files = document.getElementById('file-input-reg').files;
       const file = files[0];
       if(file == null){
         return alert('No file selected.');
@@ -190,11 +190,11 @@ class RegistrationForm extends React.Component {
   
       return (
         <section className='add-user-section'>
-          <label for='file-input' class='preview-label'>Please add a profile pic</label>
-          <div className='add-user-1'>
+          <label for='file-input-reg' class='preview-label-reg'>Please add a profile pic</label>
+          <div className='add-user-reg'>
         <input 
         type='file' 
-        id='file-input'
+        id='file-input-reg'
         onChange={this.initUpload}/>
         <img 
           id='preview'
@@ -225,8 +225,8 @@ class RegistrationForm extends React.Component {
             </div>
           </div>
   
-          <div className='user_name'>
-            <label htmlFor='username'>User name</label>
+          <div className='username'>
+            <label htmlFor='username'>Username</label>
             <input
               type='text'
               className='registration_input'

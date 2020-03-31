@@ -6,31 +6,36 @@
 
 #preview {
     border-radius: 50%;
-    height: 125px;
-    width: 125px;
+    height: 110px;
+    width: 110px;
     margin: 16px;
 }
 
 
-.add-user-1 {
+.add-user-reg {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.preview-label {
+#file-input-reg {
+    font-size: 18px;
+    margin-left: 90px;
+}
+
+.preview-label-reg {
     display: block;
     font-size: 18px;
+    margin: 15px;
 }
 
 .registration-form {
     display: block;
-    width: 90%;
     font-size: 26px;
     color: white;
     background-color: #3966BF;
-    padding: 15px;
+    padding: 28px;
     margin-bottom: 15px;
     border: 1px solid #3966BF;
     border-radius: 5px;
@@ -87,15 +92,16 @@ button {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        width: 70%;
         padding: 15px;
-        font-size: 26px;
-        margin-left: 70px;
-        margin-right: 70px;
+        font-size: 30px;
         margin-top: 40px;
+        margin-right: 60px;
+        margin-left: 60px;
         border-radius: 5px;
     }
 
-    .fullname, .user_name, .password, .email {
+    .fullname, .username, .password, .email {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
@@ -107,13 +113,19 @@ button {
         flex: 1;
     }
 
-    .preview-label {
+    .preview-label-reg {
         font-size: 24px;
     }
 
-    .add-user-1 {
+    .add-user-reg {
         display: flex;
         flex-direction: row;
+        margin-left: 70px;
+        margin-right: 70px;
+    }
+
+    #file-input-reg {
+        width: 60%
     }
 
     .registration_input {
@@ -146,9 +158,14 @@ button {
 
   @media screen and (min-width: 980px) {
 
+    .add-user-section {
+        width: 90%;
+    }
+
     .registrationForm {
-        margin-left: 200px;
-        margin-right: 200px;
+        margin-left: 150px;
+        margin-right: 150px;
+        width: 90%;
     }
 
     .registration_input {

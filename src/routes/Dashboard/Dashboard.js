@@ -157,18 +157,6 @@ renderCurrentTask() {
     return( 
       <section>
         <p>What's your bucket list?</p>
-        <div className='add-task-buttons'>
-            <button className='add-task-button'>
-              <Link to={`/newtask`}>
-              Add Task
-              </Link>
-            </button>
-            <button className='add-task-list-button'>
-              <Link to={`/tasklist`}>
-              Task List
-              </Link>
-            </button>
-          </div>
       </section>
     );
   }
